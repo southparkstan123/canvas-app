@@ -8,6 +8,10 @@
     cursor: crosshair;
 }
 
+#canvas-real{
+    background-color: white;
+}
+
 #canvas-draft{
     background-color: transparent;
 }
