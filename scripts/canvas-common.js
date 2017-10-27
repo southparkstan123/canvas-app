@@ -4,10 +4,6 @@ let canvasDraft = document.getElementById('canvas-draft');
 let contextDraft = canvasDraft.getContext('2d');
 let currentFunction;
 let dragging = false;
-let isOutsideCanvas = false;
-
-// $('#canvas-draft').mouseenter(function(){isOnDiv=true;});
-// $('#canvas-draft').mouseleave(function(){isOnDiv=false;});
 
 $('#canvas-draft').mousedown(function(e){
     let mouseX = e.pageX - this.offsetLeft;
@@ -16,7 +12,6 @@ $('#canvas-draft').mousedown(function(e){
     dragging = true;
 });
 $('#canvas-draft').mousemove(function(e){
-    // console.log(dragging);
     if(dragging){
         let mouseX = e.pageX - this.offsetLeft;
         let mouseY = e.pageY - this.offsetTop;
@@ -31,7 +26,6 @@ $(document).mouseup(function(e){
     currentFunction.onMouseUp([mouseX,mouseY],e);
 });
 $('#canvas-draft').mouseleave(function(e){
-    // dragging = false;
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
     currentFunction.onMouseLeave([mouseX,mouseY],e);  

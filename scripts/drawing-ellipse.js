@@ -1,4 +1,4 @@
-class DrawingCircle extends PaintFunction{
+class DrawingEllipse extends PaintFunction{
     constructor(contextReal,contextDraft){
         super();
         this.contextReal = contextReal;
@@ -28,19 +28,19 @@ class DrawingCircle extends PaintFunction{
         
         context.beginPath();
         
-        context.moveTo(startX + width / 2, startY ); // A1
+        context.moveTo(startX + width / 2, startY ); 
         
         context.bezierCurveTo(
-            startX + width , startY , // C3
-            startX + width , startY + height, // C4
-            startX + width / 2, startY + height); // A1
+            startX + width , startY , 
+            startX + width , startY + height, 
+            startX + width / 2, startY + height); 
 
-        context.moveTo(startX + width / 2, startY + height); // A1
+        context.moveTo(startX + width / 2, startY + height); 
         
         context.bezierCurveTo(
-            startX , startY + height , // C3
-            startX , startY , // C4
-            startX + width / 2, startY  ); // A1
+            startX , startY + height , 
+            startX , startY , 
+            startX + width / 2, startY  );
 
         context.fill();
         context.closePath();	

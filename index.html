@@ -17,7 +17,7 @@
         <div class="buttons">
             <span class="btn btn-primary fa fa-square" id="drawing-rectangle" >Drawing Rectangle</span>
             <span class="btn btn-info fa fa-paint-brush" id="drawing-line" >Drawing Line</span>
-            <span class="btn btn-info fa fa-circle" id="drawing-circle" >Drawing Circle</span>
+            <span class="btn btn-info fa fa-circle" id="drawing-circle" >Drawing Ellipse</span>
             <span class="btn btn-info fa fa-circle" id="drawing-straight-line" >Drawing Straight Line</span>
         </div>
         <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
@@ -27,7 +27,7 @@
         <script type='text/javascript' src="scripts/drawing-line.js"></script>
         <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
         <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
-        <script type='text/javascript' src="scripts/drawing-circle.js"></script>
+        <script type='text/javascript' src="scripts/drawing-ellipse.js"></script>
         <script type='text/javascript'>
             $('#drawing-rectangle').click(()=>{
                 currentFunction = new DrawingRectangle(contextReal,contextDraft);
@@ -35,8 +35,8 @@
             $('#drawing-line').click(()=>{
                 currentFunction = new DrawingLine(contextReal,contextDraft);
             });
-            $('#drawing-circle').click(()=>{
-                currentFunction = new DrawingCircle(contextReal,contextDraft);
+            $('#drawing-ellipse').click(()=>{
+                currentFunction = new DrawingEllipse(contextReal,contextDraft);
             });
             $('#drawing-straight-line').click(()=>{
                 currentFunction = new DrawingStraightLine(contextReal,contextDraft);
