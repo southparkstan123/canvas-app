@@ -9,6 +9,7 @@ class DrawingStraightLine extends PaintFunction{
         this.origY = coord[1];
     }
     onDragging(coord,event){
+        this.contextDraft.strokeStyle=this.strokeColor;
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.drawStraightLine(this.contextDraft,coord[0],coord[1],this.origX, this.origY);
     }
@@ -17,6 +18,7 @@ class DrawingStraightLine extends PaintFunction{
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         if(dragging){
             this.drawStraightLine(this.contextReal,coord[0],coord[1],this.origX, this.origY);
+            this.contextReal.strokeStyle=this.strokeColor;
         }
     }
     onMouseLeave(){}
