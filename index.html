@@ -20,6 +20,7 @@
         <span class="btn btn-primary fa fa-square" id="drawing-rectangle">Drawing Rectangle</span>
         <span class="btn btn-info fa fa-paint-brush" id="drawing-line">Drawing Line</span>
         <span class="btn btn-danger fa fa-paint-brush" id="drawing-strokerectangle">Drawing StrokeRectangle</span>
+        <span class="btn btn-danger fa fa-paint-brush" id="eraser">Eraser</span>
         <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
     </div>
 
@@ -30,6 +31,8 @@
     <script type='text/javascript' src="drawing-line.js"></script>
     <script type='text/javascript' src="drawing-rectangle.js"></script>
     <script type='text/javascript' src="drawing-strokerectangle.js"></script>
+	<script type='text/javascript' src="eraser.js"></script>
+
     <script type='text/javascript'>
         $('#drawing-rectangle').click(() => {
             currentFunction = new DrawingRectangle(contextReal, contextDraft);
@@ -40,7 +43,9 @@
         $('#drawing-strokerectangle').click(() => {
             currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
         });
-
+        $('#eraser').click(function () {
+            currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
+        });
         $('#clear').click(function () {
             contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
