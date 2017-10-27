@@ -20,10 +20,10 @@ $('#canvas-draft').mousemove(function(e){
     currentFunction.onMouseMove(e,this);
 });
 $(document).mouseup(function(e){
-    dragging = false;
     let mouseX = e.pageX - $('#canvas-draft').get()[0].offsetLeft;
     let mouseY = e.pageY - $('#canvas-draft').get()[0].offsetTop;
-    currentFunction.onMouseUp([mouseX,mouseY],e);
+    currentFunction.onMouseUp([mouseX,mouseY],e,dragging);
+    dragging = false;
 });
 $('#canvas-draft').mouseleave(function(e){
     let mouseX = e.pageX - this.offsetLeft;
@@ -45,4 +45,4 @@ class PaintFunction{
     onMouseUp(){}
     onMouseLeave(){}
     onMouseEnter(){}
-}    
+}   

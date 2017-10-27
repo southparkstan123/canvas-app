@@ -17,9 +17,11 @@ class DrawingEllipse extends PaintFunction{
     }
 
     onMouseMove(){}
-    onMouseUp(coord,event){
+    onMouseUp(coord,event,dragging){
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
-        this.drawEllipse(this.contextReal, this.origX,this.origY,coord[0]- this.origX,coord[1] - this.origY);
+        if(dragging){
+            this.drawEllipse(this.contextReal, this.origX,this.origY,coord[0]- this.origX,coord[1] - this.origY);
+        }
     }
     onMouseLeave(){}
     onMouseEnter(){}
