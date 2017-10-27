@@ -13,9 +13,11 @@ class DrawingStraightLine extends PaintFunction{
         this.drawStraightLine(this.contextDraft,coord[0],coord[1],this.origX, this.origY);
     }
     onMouseMove(){}
-    onMouseUp(coord){
+    onMouseUp(coord,event,dragging){
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
-        this.drawStraightLine(this.contextReal,coord[0],coord[1],this.origX, this.origY);
+        if(dragging){
+            this.drawStraightLine(this.contextReal,coord[0],coord[1],this.origX, this.origY);
+        }
     }
     onMouseLeave(){}
     onMouseEnter(){}
