@@ -25,6 +25,27 @@
 
     </div>
 
+    <div id="text-panel">
+        <form id="add-text">
+            <label for="text">Text:</label>
+            <input type="text" name="text" id="text">
+            <label for="size">Text:</label>
+            <input type="number" name="size" id="text-size" min=6 max=48>px
+            <label for="style">Style:</label>
+            <select id = "fillOrStroke">
+                <option>Style</option>
+                <option value = "fill">fill</option>
+                <option value = "stroke">stroke</option>
+                <option value = "both">both</option>
+            </select>
+            <label for="xpos">X-position:</label>
+            <input type="number" name="xpos" id="text-size" min=0 max=1200>px
+            <label for="ypos">Y-position:</label>
+            <input type="number" name="ypos" id="text-size" min=0 max=1200>px
+            <button type="submit">Add Text</button>
+        </form>
+    </div>
+
     <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
@@ -51,8 +72,15 @@
             contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
         });
+        $("#text-tool").click(function(){
+            $("#text-panel").toggle();
+        });
+        $('#add-text').submit(function(e){
+            e.preventDefault();
+
+            console.log(e.target.xpos.value);
+
+        });   
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
 </body>
-
-</html>
