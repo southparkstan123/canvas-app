@@ -5,10 +5,11 @@ class Eraser extends PaintFunction {
     }
 
     onMouseDown(coord, event) {
-        var backgroundcolor = $('#canvas-real').css("backgroundColor")
-        this.context.strokeStyle = backgroundcolor;
+        // var backgroundcolor = $('#canvas-real').css("backgroundColor")
+        // this.context.strokeStyle = backgroundcolor;
 
-        
+        this.context.globalCompositeOperation="destination-out";
+        this.context.strokeStyle = "rgba(0,0,0,1)";
         this.context.beginPath();
         this.context.moveTo(coord[0], coord[1]);
         this.draw(coord[0], coord[1]);

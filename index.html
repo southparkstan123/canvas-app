@@ -19,6 +19,7 @@
     <div class="buttons">
         <span class="btn btn-primary fa fa-square" id="drawing-rectangle">Drawing Rectangle</span>
         <span class="btn btn-info fa fa-paint-brush" id="drawing-line">Drawing Line</span>
+        <span class="btn btn-info fa fa-paint-brush" id="drawing-ellipse">Drawing Ellipse</span>
         <span class="btn btn-danger fa fa-paint-brush" id="drawing-strokerectangle">Drawing StrokeRectangle</span>
         <span class="btn btn-danger fa fa-paint-brush" id="eraser">Eraser</span>
         <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
@@ -29,6 +30,7 @@
         crossorigin="anonymous"></script>
     <script type='text/javascript' src="scripts/canvas-common.js"></script>
     <script type='text/javascript' src="scripts/drawing-line.js"></script>
+    <script type='text/javascript' src="scripts/drawing-ellipse.js"></script>
     <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
     <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
     <script type='text/javascript' src="scripts/eraser.js"></script>
@@ -40,16 +42,21 @@
         $('#drawing-line').click(() => {
             currentFunction = new DrawingLine(contextReal, contextDraft);
         });
+        $('#drawing-ellipse').click(() => {
+            currentFunction = new DrawingEllipse(contextReal, contextDraft);
+        });
         $('#drawing-strokerectangle').click(() => {
             currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
         });
         $('#eraser').click(function () {
-            currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
+            currentFunction = new Eraser(contextReal, contextDraft);
         });
         $('#clear').click(function () {
             contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
         });
+
+        DrawingEllipse
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
 </body>
