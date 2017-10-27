@@ -22,9 +22,8 @@
         <span class="btn btn-danger fa fa-paint-brush" id="drawing-strokerectangle">Drawing StrokeRectangle</span>
         <span class="btn btn-danger fa fa-paint-brush" id="eraser">Eraser</span>
         <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
-
+        <span class="btn btn-danger fa fa-font" id="text-tool">Text Tool</span>
     </div>
-
     <div id="text-panel">
         <form id="add-text">
             <label for="text">Text:</label>
@@ -72,6 +71,7 @@
             contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
         });
+        $("#text-panel").hide();
         $("#text-tool").click(function(){
             $("#text-panel").toggle();
         });
