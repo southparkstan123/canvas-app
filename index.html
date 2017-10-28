@@ -59,7 +59,7 @@
     <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
     <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
     <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
-
+    <script type='text/javascript' src="scripts/add-text.js"></script>
     <script type='text/javascript' src="scripts/eraser.js"></script>
     <script type='text/javascript' src="scripts/colorspectrum.js"></script>
 
@@ -101,21 +101,8 @@
             let xpos = e.target.xpos.value;
             let ypos = e.target.ypos.value;
 
-            console.log(text);
-            console.log(size);
-            console.log(style);
-            console.log(xpos);
-            console.log(ypos);
-
-            contextReal.font = `${size}px Arial`;
-            contextReal.textBaseline = 'top'
-            contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-            if(style === 'stroke'){          
-                contextReal.strokeText(text,xpos,ypos);
-            }else if(style === 'fill'){
-                contextReal.fillText(text,xpos,ypos);
-            }
-            // this.reset();
+            currentFunction = new AddText(contextReal);
+            currentFunction.addText(contextReal,text,size,style,xpos,ypos);
         });  
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
