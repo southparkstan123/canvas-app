@@ -3,9 +3,10 @@ class DrawingLine extends PaintFunction{
         super();
         this.context = contextReal;            
     }
-    
     onMouseDown(coord,event){
         this.context.beginPath();
+        this.context.strokeStyle = this.strokeColor; //can only be changed after we have the color library
+        console.log(this.context.strokeColor);
         this.context.moveTo(coord[0],coord[1]);
         this.draw(coord[0],coord[1]);
     }

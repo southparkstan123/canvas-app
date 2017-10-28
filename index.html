@@ -8,7 +8,7 @@
         crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
         crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet" type='text/css'>
+
 </head>
 
 <body>
@@ -19,23 +19,25 @@
     <div class="buttons">
         <span class="btn btn-primary fa fa-square" id="drawing-rectangle">Drawing Rectangle</span>
         <span class="btn btn-info fa fa-paint-brush" id="drawing-line">Drawing Line</span>
+        <span class="btn btn-info fa fa-paint-brush" id="drawing-ellipse">Drawing Ellipse</span>
         <span class="btn btn-danger fa fa-paint-brush" id="drawing-strokerectangle">Drawing StrokeRectangle</span>
+        <span class="btn btn-danger fa fa-paint-brush" id="drawing-straight-line">Drawing Straight Line</span>
         <span class="btn btn-danger fa fa-paint-brush" id="eraser">Eraser</span>
-        <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
         <span class="btn btn-danger fa fa-font" id="text-tool">Text Tool</span>
+        <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
+        <span><input type='text' id="colorpicker" /></span>
+
     </div>
     <div id="text-panel">
         <form id="add-text">
             <label for="text">Text:</label>
             <input type="text" name="text" id="text">
-            <label for="size">Text:</label>
-            <input type="number" name="size" id="text-size" min=6 max=48>px
+            <label for="size">Size:</label>
+            <input type="number" name="size" id="text-size" min=6 max=480>px
             <label for="style">Style:</label>
-            <select id = "fillOrStroke">
-                <option>Style</option>
-                <option value = "fill">fill</option>
+            <select id = "fillOrStroke" name="style">
+                <option value = "fill" selected>fill</option>
                 <option value = "stroke">stroke</option>
-                <option value = "both">both</option>
             </select>
             <label for="xpos">X-position:</label>
             <input type="number" name="xpos" id="text-size" min=0 max=1200>px
@@ -48,11 +50,20 @@
     <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+    <script src='scripts/spectrum.js'></script>
+
+    <link rel='stylesheet' href='css/spectrum.css' />
     <script type='text/javascript' src="scripts/canvas-common.js"></script>
     <script type='text/javascript' src="scripts/drawing-line.js"></script>
+    <script type='text/javascript' src="scripts/drawing-ellipse.js"></script>
     <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
     <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
+    <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
+
     <script type='text/javascript' src="scripts/eraser.js"></script>
+    <script type='text/javascript' src="scripts/colorspectrum.js"></script>
+
+    <link href="css/style.css" rel="stylesheet" type='text/css'>
 
     <script type='text/javascript'>
         $('#drawing-rectangle').click(() => {
@@ -61,11 +72,17 @@
         $('#drawing-line').click(() => {
             currentFunction = new DrawingLine(contextReal, contextDraft);
         });
+        $('#drawing-ellipse').click(() => {
+            currentFunction = new DrawingEllipse(contextReal, contextDraft);
+        });
         $('#drawing-strokerectangle').click(() => {
             currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
         });
+        $('#drawing-straight-line').click(() => {
+            currentFunction = new DrawingStraightLine(contextReal, contextDraft);
+        });
         $('#eraser').click(function () {
-            currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
+            currentFunction = new Eraser(contextReal, contextDraft);
         });
         $('#clear').click(function () {
             contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
@@ -78,9 +95,30 @@
         $('#add-text').submit(function(e){
             e.preventDefault();
 
-            console.log(e.target.xpos.value);
+            let text = e.target.text.value;
+            let size = e.target.size.value;
+            let style = e.target.style.value;
+            let xpos = e.target.xpos.value;
+            let ypos = e.target.ypos.value;
 
-        });   
+            console.log(text);
+            console.log(size);
+            console.log(style);
+            console.log(xpos);
+            console.log(ypos);
+
+            contextReal.font = `${size}px Arial`;
+            contextReal.textBaseline = 'top'
+            contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+            if(style === 'stroke'){          
+                contextReal.strokeText(text,xpos,ypos);
+            }else if(style === 'fill'){
+                contextReal.fillText(text,xpos,ypos);
+            }
+            // this.reset();
+        });  
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
 </body>
+
+</html>
