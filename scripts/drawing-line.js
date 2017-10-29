@@ -1,34 +1,41 @@
-class DrawingLine extends PaintFunction{
-    constructor(contextReal){
+class DrawingLine extends PaintFunction {
+    constructor(contextReal) {
         super();
-        this.context = contextReal;            
+        this.context = contextReal;
     }
-    onMouseDown(coord,event){
+    onMouseDown(coord, event) {
         this.context.beginPath();
         this.context.strokeStyle = this.strokeColor; //can only be changed after we have the color library
-        console.log(this.context.strokeColor);
-        this.context.moveTo(coord[0],coord[1]);
-        this.draw(coord[0],coord[1]);
+        this.context.moveTo(coord[0], coord[1]);
+        this.draw(coord[0], coord[1]);
     }
-    onDragging(coord,event){
-        this.draw(coord[0],coord[1]);
+    onDragging(coord, event) {
+        this.draw(coord[0], coord[1]);
     }
 
-    onMouseMove(){}
-    onMouseUp(){}
-    onMouseLeave(coord,event,dragging){
-        if(dragging){
+    onMouseMove() { }
+    onMouseUp() { }
+    onMouseLeave(coord, event, dragging) {
+        if (dragging) {
             this.context.beginPath();
-            this.context.moveTo(coord[0],coord[1]);
-            this.draw(coord[0],coord[1]);
+            this.context.moveTo(coord[0], coord[1]);
+            // this.draw(coord[0], coord[1]);
+            // this.context.closePath();
+            // dragging=false;
         }
     }
-    onMouseEnter(){}
+    onMouseEnter(coord, event, dragging) {
+        if (dragging) {
+            this.context.beginPath();
+            this.draw(coord[0], coord[1]);
 
-    draw(x,y){
-        this.context.lineTo(x,y);
-        this.context.moveTo(x,y);
+        }
+    }
+
+    draw(x, y) {
+        this.context.lineTo(x, y);
+        this.context.moveTo(x, y);
         this.context.closePath();
-        this.context.stroke();    
+        this.context.stroke();
     }
 }

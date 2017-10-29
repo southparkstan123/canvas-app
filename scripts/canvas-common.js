@@ -41,7 +41,6 @@ $('#canvas-draft').mouseenter(function (e) {
 
 
 
-
 class PaintFunction {
     constructor() {
         /*this.strokeColor = ""

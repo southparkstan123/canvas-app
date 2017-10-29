@@ -1,4 +1,4 @@
-$("#colorpicker").spectrum({
+$("#background").spectrum({
     color: "#000000 ",
     showInput: true,
     className: "full-spectrum",
@@ -11,7 +11,7 @@ $("#colorpicker").spectrum({
     showButtons: false,
     move: function (color) {
 
-       $(currentFunction.strokeColor = color.toHexString());
+       $(currentFunction.backGround = color.toHexString());
 
 
    },
