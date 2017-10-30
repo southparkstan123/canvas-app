@@ -5,11 +5,10 @@ class DrawingLine extends PaintFunction {
     }
     onMouseDown(coord, event) {
         this.context.beginPath();
-        this.context.strokeStyle = this.strokeColor; //can only be changed after we have the color library
-        this.context.moveTo(coord[0], coord[1]);
         this.draw(coord[0], coord[1]);
     }
     onDragging(coord, event) {
+        this.context.strokeStyle = this.strokeColor; //can only be changed after we have the color library
         this.draw(coord[0], coord[1]);
     }
 
