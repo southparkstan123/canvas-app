@@ -19,7 +19,7 @@ class DrawingStrokeRectangle extends PaintFunction {
     onMouseUp(coord, event, sdragging) {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         if (dragging) {
-            this.contextReal.strokeStyle=this.strokeColor;
+            this.contextReal.strokeStyle = this.strokeColor;
             this.contextReal.strokeRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY)
         }
     }

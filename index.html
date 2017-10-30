@@ -23,51 +23,55 @@
         <span class="btn btn-danger fa fa-paint-brush" id="drawing-strokerectangle">Drawing StrokeRectangle</span>
         <span class="btn btn-danger fa fa-paint-brush" id="drawing-straight-line">Drawing Straight Line</span>
         <span class="btn btn-danger fa fa-paint-brush" id="eraser">Eraser</span>
-        <span class="btn btn-danger fa fa-font" id="text-tool">Text Tool</span>
         <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
-        <span><input type='text' id="colorpicker" /></span>
+        <button><input type='text' id="strokestyle" />For strokeStyle</button>
+        <button><input type='text' id="fillstyle" />For fillStyle</button>
+        <button><input type='text' id="background" />For background</button>
+        <span class="btn btn-danger fa fa-paint-brush" id="eyedropper">Eyedropper</span>
+        <span class="btn btn-danger fa fa-font" id="text-tool">Text Tool</span>
+        <!--<input class="linewidth" type="number" name="size" id="text-size" min=6 max=480>px-->
+        <div id="text-panel">
+            <form id="add-text">
+                <label for="text">Text:</label>
+                <input type="text" name="text" id="text">
+                <label for="size">Size:</label>
+                <select id = "size" name="size">
+                    <option value = "9" selected>9px</option>
+                    <option value = "12">12px</option>
+                    <option value = "14">14px</option>
+                    <option value = "16">16px</option>
+                    <option value = "20">20px</option>
+                    <option value = "48">48px</option>
+                    <option value = "72">72px</option>
+                    <option value = "96">96px</option>
+                    <option value = "144">144px</option>
+                    <option value = "200">200px</option>
+                </select>
+                <label for="fillOrStroke">Fill Or Stroke:</label>
+                <select id = "fillOrStroke" name="fillOrStroke">
+                    <option value = "fill" selected>fill</option>
+                    <option value = "stroke">stroke</option>
+                </select>
+                <label for="font-family">Font Family:</label>
+                <select id ="font-family" name="fontFamily">
+                    <option value = "Arial" selected>Arial</option>
+                    <option value = "Times New Roman">Times New Roman</option>
+                </select>
+                <label for="style">Style:</label>
+                <select id ="style" name="style">
+                    <option value = "normal" selected>Normal</option>
+                    <option value = "bold">Bold</option>
+                    <option value = "italic">Italic</option>
+                    <option value = "both">Both</option>
+                </select>
+                <label for="xpos">X-position:</label>
+                <input type="number" name="xpos" id="text-size" min=0 max=1200>px
+                <label for="ypos">Y-position:</label>
+                <input type="number" name="ypos" id="text-size" min=0 max=1200>px
+                <button type="submit">Add Text</button>
+            </form>
+        </div>
 
-    </div>
-    <div id="text-panel">
-        <form id="add-text">
-            <label for="text">Text:</label>
-            <input type="text" name="text" id="text">
-            <label for="size">Size:</label>
-            <select id = "size" name="size">
-                <option value = "9" selected>9px</option>
-                <option value = "12">12px</option>
-                <option value = "14">14px</option>
-                <option value = "16">16px</option>
-                <option value = "20">20px</option>
-                <option value = "48">48px</option>
-                <option value = "72">72px</option>
-                <option value = "96">96px</option>
-                <option value = "144">144px</option>
-                <option value = "200">200px</option>
-            </select>
-            <label for="fillOrStroke">Fill Or Stroke:</label>
-            <select id = "fillOrStroke" name="fillOrStroke">
-                <option value = "fill" selected>fill</option>
-                <option value = "stroke">stroke</option>
-            </select>
-            <label for="font-family">Font Family:</label>
-            <select id ="font-family" name="fontFamily">
-                <option value = "Arial" selected>Arial</option>
-                <option value = "Times New Roman">Times New Roman</option>
-            </select>
-            <label for="style">Style:</label>
-            <select id ="style" name="style">
-                <option value = "normal" selected>Normal</option>
-                <option value = "bold">Bold</option>
-                <option value = "italic">Italic</option>
-                <option value = "both">Both</option>
-            </select>
-            <label for="xpos">X-position:</label>
-            <input type="number" name="xpos" id="text-size" min=0 max=1200>px
-            <label for="ypos">Y-position:</label>
-            <input type="number" name="ypos" id="text-size" min=0 max=1200>px
-            <button type="submit">Add Text</button>
-        </form>
     </div>
 
     <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
@@ -82,9 +86,16 @@
     <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
     <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
     <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
-    <script type='text/javascript' src="scripts/add-text.js"></script>
+
     <script type='text/javascript' src="scripts/eraser.js"></script>
-    <script type='text/javascript' src="scripts/colorspectrum.js"></script>
+    <script type='text/javascript' src="scripts/strokestyle.js"></script>
+    <script type='text/javascript' src="scripts/fillstyle.js"></script>
+
+    <script type='text/javascript' src="scripts/background.js"></script>
+    <script type='text/javascript' src="scripts/eyedropper.js"></script>
+
+    <script type='text/javascript' src="scripts/add-text.js"></script>
+
 
     <link href="css/style.css" rel="stylesheet" type='text/css'>
 
@@ -107,10 +118,18 @@
         $('#eraser').click(function () {
             currentFunction = new Eraser(contextReal, contextDraft);
         });
+
         $('#clear').click(function () {
             contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
         });
+
+
+        $("#eyedropper").click(function (e) {
+            currentFunction = new EyeDropper(contextReal);
+
+        });
+
         $("#text-panel").hide();
         $("#text-tool").click(function(){
             $("#text-panel").toggle();
@@ -129,6 +148,7 @@
             currentFunction = new AddText(contextReal);
             currentFunction.addText(contextReal,text,fillOrStroke,fontFamily,size,style,xpos,ypos);
         });  
+
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
 </body>
