@@ -11,8 +11,7 @@ $("#background").spectrum({
     showButtons: false,
     move: function (color) {
 
-       $(currentFunction.backGround = color.toHexString());
-
+       $('#canvas-real').css('background-color', color.toHexString())
 
    },
     show: function () {

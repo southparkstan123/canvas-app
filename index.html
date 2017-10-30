@@ -27,6 +27,7 @@
         <button><input type='text' id="strokestyle" />For strokeStyle</button>
         <button><input type='text' id="fillstyle" />For fillStyle</button>
         <button><input type='text' id="background" />For background</button>
+        <!--<input class="linewidth" type="number" name="size" id="text-size" min=6 max=480>px-->
 
 
     </div>
@@ -47,7 +48,6 @@
     <script type='text/javascript' src="scripts/eraser.js"></script>
     <script type='text/javascript' src="scripts/strokestyle.js"></script>
     <script type='text/javascript' src="scripts/fillstyle.js"></script>
-    <script type='text/javascript' src="scripts/changebackgroundcolor.js"></script>
 
     <script type='text/javascript' src="scripts/background.js"></script>
 
@@ -72,12 +72,12 @@
         $('#eraser').click(function () {
             currentFunction = new Eraser(contextReal, contextDraft);
         });
+
         $('#clear').click(function () {
             contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
         });
 
-        DrawingEllipse
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
 </body>
