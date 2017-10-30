@@ -18,16 +18,12 @@ class DrawingLine extends PaintFunction {
         if (dragging) {
             this.context.beginPath();
             this.context.moveTo(coord[0], coord[1]);
-            // this.draw(coord[0], coord[1]);
-            // this.context.closePath();
-            // dragging=false;
         }
     }
     onMouseEnter(coord, event, dragging) {
         if (dragging) {
             this.context.beginPath();
             this.draw(coord[0], coord[1]);
-
         }
     }
 

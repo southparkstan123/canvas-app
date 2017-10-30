@@ -27,6 +27,8 @@
         <button><input type='text' id="strokestyle" />For strokeStyle</button>
         <button><input type='text' id="fillstyle" />For fillStyle</button>
         <button><input type='text' id="background" />For background</button>
+        <span class="btn btn-danger fa fa-paint-brush" id="eyedropper">Eyedropper</span>
+
         <!--<input class="linewidth" type="number" name="size" id="text-size" min=6 max=480>px-->
 
 
@@ -50,6 +52,8 @@
     <script type='text/javascript' src="scripts/fillstyle.js"></script>
 
     <script type='text/javascript' src="scripts/background.js"></script>
+    <script type='text/javascript' src="scripts/eyedropper.js"></script>
+
 
     <link href="css/style.css" rel="stylesheet" type='text/css'>
 
@@ -76,6 +80,12 @@
         $('#clear').click(function () {
             contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+        });
+
+
+        $("#eyedropper").click(function (e) {
+            currentFunction = new EyeDropper(contextReal);
+
         });
 
         currentFunction = new DrawingLine(contextReal, contextDraft);
