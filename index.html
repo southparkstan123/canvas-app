@@ -33,11 +33,34 @@
             <label for="text">Text:</label>
             <input type="text" name="text" id="text">
             <label for="size">Size:</label>
-            <input type="number" name="size" id="text-size" min=6 max=480>px
-            <label for="style">Style:</label>
-            <select id = "fillOrStroke" name="style">
+            <select id = "size" name="size">
+                <option value = "9" selected>9px</option>
+                <option value = "12">12px</option>
+                <option value = "14">14px</option>
+                <option value = "16">16px</option>
+                <option value = "20">20px</option>
+                <option value = "48">48px</option>
+                <option value = "72">72px</option>
+                <option value = "96">96px</option>
+                <option value = "144">144px</option>
+                <option value = "200">200px</option>
+            </select>
+            <label for="fillOrStroke">Fill Or Stroke:</label>
+            <select id = "fillOrStroke" name="fillOrStroke">
                 <option value = "fill" selected>fill</option>
                 <option value = "stroke">stroke</option>
+            </select>
+            <label for="font-family">Font Family:</label>
+            <select id ="font-family" name="fontFamily">
+                <option value = "Arial" selected>Arial</option>
+                <option value = "Times New Roman">Times New Roman</option>
+            </select>
+            <label for="style">Style:</label>
+            <select id ="style" name="style">
+                <option value = "normal" selected>Normal</option>
+                <option value = "bold">Bold</option>
+                <option value = "italic">Italic</option>
+                <option value = "both">Both</option>
             </select>
             <label for="xpos">X-position:</label>
             <input type="number" name="xpos" id="text-size" min=0 max=1200>px
@@ -97,12 +120,14 @@
 
             let text = e.target.text.value;
             let size = e.target.size.value;
+            let fillOrStroke = e.target.fillOrStroke.value;
+            let fontFamily = e.target.fontFamily.value;
             let style = e.target.style.value;
             let xpos = e.target.xpos.value;
             let ypos = e.target.ypos.value;
 
             currentFunction = new AddText(contextReal);
-            currentFunction.addText(contextReal,text,size,style,xpos,ypos);
+            currentFunction.addText(contextReal,text,fillOrStroke,fontFamily,size,style,xpos,ypos);
         });  
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>

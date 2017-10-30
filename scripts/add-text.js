@@ -4,16 +4,29 @@ class AddText extends PaintFunction{
         this.contextReal = contextReal;
     }
 
-    addText(context,text,size,style,xpos,ypos){
+    addText(context,text,fillOrStroke,fontFamily,size,style,xpos,ypos){
         context.strokeStyle = this.strokeColor;
         context.fillStyle=this.strokeColor;
+        switch(style) {
+            case 'normal':
+                context.font = `normal normal ${size}px ${fontFamily}`;
+                break;
+            case 'bold':
+                context.font = `normal bold ${size}px ${fontFamily}`;
+                break;
+            case 'italic':
+                context.font = `italic normal ${size}px ${fontFamily}`;
+                break;
+            case 'both':
+                context.font = `italic bold ${size}px ${fontFamily}`;
+                break;
+        }
         
-        context.font = `${size}px Arial`;
         context.textBaseline = 'top';
-        console.log(context.strokeStyle);
-        if(style === 'stroke'){          
+        console.log(context.font);
+        if(fillOrStroke === 'stroke'){          
             context.strokeText(text,xpos,ypos);
-        }else if(style === 'fill'){
+        }else if(fillOrStroke === 'fill'){
             context.fillText(text,xpos,ypos);
         }
     }
