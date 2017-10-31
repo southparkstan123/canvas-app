@@ -24,12 +24,14 @@
         <span class="btn btn-danger fa fa-paint-brush" id="drawing-straight-line">Drawing Straight Line</span>
         <span class="btn btn-danger fa fa-paint-brush" id="eraser">Eraser</span>
         <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
+        <span class="btn btn-primary fa fa-square" id="undo">Undo</span>
+        <span class="btn btn-primary fa fa-paint-brush" id="redo">Redo</span>
         <button><input type='text' id="strokestyle" />For strokeStyle</button>
         <button><input type='text' id="fillstyle" />For fillStyle</button>
         <button><input type='text' id="background" />For background</button>
         <span class="btn btn-danger fa fa-paint-brush" id="eyedropper">Eyedropper</span>
+        <input id="linewidth" type="range" orient="vertical" name="linewidth" min="1" max="100">
         <span class="btn btn-danger fa fa-font" id="text-tool">Text Tool</span>
-        <!--<input class="linewidth" type="number" name="size" id="text-size" min=6 max=480>px-->
         <div id="text-panel">
             <form id="add-text">
                 <label for="text">Text:</label>
@@ -76,7 +78,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
     <script src='scripts/spectrum.js'></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <link rel='stylesheet' href='css/spectrum.css' />
     <script type='text/javascript' src="scripts/canvas-common.js"></script>
@@ -87,11 +88,13 @@
     <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
 
     <script type='text/javascript' src="scripts/eraser.js"></script>
+    
     <script type='text/javascript' src="scripts/strokestyle.js"></script>
     <script type='text/javascript' src="scripts/fillstyle.js"></script>
 
     <script type='text/javascript' src="scripts/background.js"></script>
     <script type='text/javascript' src="scripts/eyedropper.js"></script>
+    <script type='text/javascript' src="scripts/linewidth.js"></script>
 
     <script type='text/javascript' src="scripts/add-text.js"></script>
 
@@ -99,7 +102,6 @@
     <link href="css/style.css" rel="stylesheet" type='text/css'>
 
     <script type='text/javascript'>
-        
         $('#drawing-rectangle').click(() => {
             currentFunction = new DrawingRectangle(contextReal, contextDraft);
         });
@@ -119,15 +121,32 @@
             currentFunction = new Eraser(contextReal, contextDraft);
         });
 
-        $('#clear').click(function () {
+        $('#clear').click(() => {
             contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
         });
 
+        let undoClicked = false; //first click of Undo
+        $('#undo').click(() => {
+            var canvasPic = new Image();
+            if (undoClicked === false) { //if firstclick needs extra pop
+                undoList.pop(); 
+                undoClicked = true; // if not firstclick only needs to pop once so returns true
+            }
+            if (undoList.length == 0) {  // to clear the canvas when there is no more image stored
+                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                return;
+            } 
+            canvasPic.src = undoList.pop();
+            
+            canvasPic.onload = function () {
+                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                contextReal.drawImage(canvasPic, 0, 0); 
+            }
+        }); 
 
-        $("#eyedropper").click(function (e) {
+        $("#eyedropper").click(function () {
             currentFunction = new EyeDropper(contextReal);
-
         });
 
         $("#text-tool").click(function(){
@@ -161,9 +180,9 @@
             this.reset();
         });  
 
-
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
 </body>
 
+>>>>>>> develop
 </html>

@@ -14,7 +14,7 @@ $("#fillstyle").spectrum({
     clickoutFiresChange: true,
     move: function (color) {
 
-        $(currentFunction.fillColor = color.toHexString());
+        currentFunction.fillColor = color.toHexString();
 
 
     },
