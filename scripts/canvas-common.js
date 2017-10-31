@@ -54,12 +54,9 @@ class PaintFunction {
     constructor() {
         this.strokeColor = $('#strokestyle').spectrum('get'); //After using the eyedropper, we need these codes to make sure all the things are painted in our desired style.
         this.fillStyle = $('#fillstyle').spectrum('get');
-        this.linewidth = $("#linewidth").val();
-        // this.lineJoin=
-        // this.lineCap= 
     }
 
-    get lineWidth(){
+    get lineWidth() {
         return document.querySelector('#linewidth').value
     }
 

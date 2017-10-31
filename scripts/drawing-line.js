@@ -11,8 +11,6 @@ class DrawingLine extends PaintFunction {
     onDragging(coord, event) {
         this.context.strokeStyle = this.strokeColor; //can only be changed after we have the color library
         this.draw(coord[0], coord[1]);
-        //this.context.lineCap='round';
-
     }
 
     onMouseMove() { }
@@ -23,6 +21,7 @@ class DrawingLine extends PaintFunction {
             this.context.moveTo(coord[0], coord[1]);
         }
     }
+
     onMouseEnter(coord, event, dragging) {
         if (dragging) {
             this.context.beginPath();
