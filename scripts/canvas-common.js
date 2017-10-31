@@ -22,7 +22,9 @@ $('#canvas-draft').mousemove(function (e) {
         let mouseY = e.pageY - this.offsetTop;
         currentFunction.onDragging([mouseX, mouseY], e);
     }
-    currentFunction.onMouseMove(e, this);
+    let mouseX = e.pageX - this.offsetLeft;
+    let mouseY = e.pageY - this.offsetTop;
+    currentFunction.onMouseMove([mouseX, mouseY], e, this);
 });
 $('#canvas-draft').mouseup(function (e) {
     let mouseX = e.pageX - $('#canvas-draft').get()[0].offsetLeft;
@@ -50,10 +52,22 @@ $('#canvas-draft').mouseenter(function (e) {
 
 class PaintFunction {
     constructor() { }
+    constructor() {
+        this.strokeColor = $('#strokestyle').spectrum('get'); //After using the eyedropper, we need these codes to make sure all the things are painted in our desired style.
+        this.fillStyle = $('#fillstyle').spectrum('get');
+        this.linewidth = $("#linewidth").val();
+        // this.lineJoin=
+        // this.lineCap= 
+    }
+
+    get lineWidth(){
+        return document.querySelector('#linewidth').value
+    }
+
     onMouseDown() { }
     onDragging() { }
     onMouseMove() { }
     onMouseUp() { }
     onMouseLeave() { }
     onMouseEnter() { }
-}   
+}

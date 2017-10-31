@@ -14,7 +14,7 @@ $("#strokestyle").spectrum({
     clickoutFiresChange: true,
     move: function (color) {
 
-        $(currentFunction.strokeColor = color.toHexString());
+        currentFunction.strokeColor = color.toHexString();
 
 
     },

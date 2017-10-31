@@ -28,8 +28,8 @@
         <button><input type='text' id="strokestyle" />For strokeStyle</button>
         <button><input type='text' id="fillstyle" />For fillStyle</button>
         <button><input type='text' id="background" />For background</button>
-        <!--<input class="linewidth" type="number" name="size" id="text-size" min=6 max=480>px-->
-
+        <span class="btn btn-danger fa fa-paint-brush" id="eyedropper">Eyedropper</span>
+        <input id="linewidth" type="range" orient="vertical" name="linewidth" min="1" max="100">
 
     </div>
 
@@ -52,6 +52,9 @@
     <script type='text/javascript' src="scripts/fillstyle.js"></script>
 
     <script type='text/javascript' src="scripts/background.js"></script>
+    <script type='text/javascript' src="scripts/eyedropper.js"></script>
+    <script type='text/javascript' src="scripts/linewidth.js"></script>
+
 
     <link href="css/style.css" rel="stylesheet" type='text/css'>
 
@@ -97,6 +100,8 @@
                 contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
                 contextReal.drawImage(canvasPic, 0, 0); 
             }
+        $("#eyedropper").click(function () {
+            currentFunction = new EyeDropper(contextReal);
         });
 
         currentFunction = new DrawingLine(contextReal, contextDraft);
