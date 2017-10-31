@@ -22,6 +22,9 @@
         <span class="btn btn-info fa fa-paint-brush" id="drawing-ellipse">Drawing Ellipse</span>
         <span class="btn btn-danger fa fa-paint-brush" id="drawing-strokerectangle">Drawing StrokeRectangle</span>
         <span class="btn btn-danger fa fa-paint-brush" id="drawing-straight-line">Drawing Straight Line</span>
+        <span class="btn btn-danger fa fa-paint-brush" id="drawing-curve">Drawing Curve</span>
+        <span class="btn btn-danger fa fa-paint-brush" id="drawing-polygon">Drawing Polygon</span>
+
         <span class="btn btn-danger fa fa-paint-brush" id="eraser">Eraser</span>
         <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
         <button><input type='text' id="strokestyle" />For strokeStyle</button>
@@ -29,7 +32,20 @@
         <button><input type='text' id="background" />For background</button>
         <span class="btn btn-danger fa fa-paint-brush" id="eyedropper">Eyedropper</span>
         <input id="linewidth" type="range" orient="vertical" name="linewidth" min="1" max="100">
-
+        <select name="LineType" id="linetype">
+            <option value="butt">butt</option>
+            <option value="round">round</option>
+            <option value="square">square</option>
+        </select>
+        <select name="LineJoin" id="linejoin">
+            <option value="butt">miter</option>
+            <option value="round">round</option>
+            <option value="square">bevel</option>
+        </select>
+        <!--<select name="linedash" id="linedash">
+            <option value="[0]">No Dash</option>
+            <option value="[5]">Dash</option>
+        </select>-->
     </div>
 
     <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
@@ -44,14 +60,22 @@
     <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
     <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
     <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
+    <script type='text/javascript' src="scripts/drawing-curve.js"></script>
+    <script type='text/javascript' src="scripts/drawing-polygon.js"></script>
+
 
     <script type='text/javascript' src="scripts/eraser.js"></script>
-    <script type='text/javascript' src="scripts/strokestyle.js"></script>
-    <script type='text/javascript' src="scripts/fillstyle.js"></script>
 
-    <script type='text/javascript' src="scripts/background.js"></script>
+    <script type='text/javascript' src="scripts/setstrokestyle.js"></script>
+    <script type='text/javascript' src="scripts/setfillstyle.js"></script>
+    <script type='text/javascript' src="scripts/setbackground.js"></script>
+
     <script type='text/javascript' src="scripts/eyedropper.js"></script>
-    <script type='text/javascript' src="scripts/linewidth.js"></script>
+    <script type='text/javascript' src="scripts/setlinewidth.js"></script>
+    <script type='text/javascript' src="scripts/setlinetype.js"></script>
+    <script type='text/javascript' src="scripts/setlinejoin.js"></script>
+    <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
+
 
 
     <link href="css/style.css" rel="stylesheet" type='text/css'>
@@ -71,6 +95,12 @@
         });
         $('#drawing-straight-line').click(() => {
             currentFunction = new DrawingStraightLine(contextReal, contextDraft);
+        });
+        $('#drawing-curve').click(() => {
+            currentFunction = new DrawingCurve(contextReal, contextDraft);
+        });
+        $('#drawing-polygon').click(() => {
+            currentFunction = new DrawingPolygon(contextReal, contextDraft);
         });
         $('#eraser').click(function () {
             currentFunction = new Eraser(contextReal, contextDraft);
