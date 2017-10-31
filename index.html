@@ -27,6 +27,8 @@
 
         <span class="btn btn-danger fa fa-paint-brush" id="eraser">Eraser</span>
         <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
+        <span class="btn btn-primary fa fa-square" id="undo">Undo</span>
+        <span class="btn btn-primary fa fa-paint-brush" id="redo">Redo</span>
         <button><input type='text' id="strokestyle" />For strokeStyle</button>
         <button><input type='text' id="fillstyle" />For fillStyle</button>
         <button><input type='text' id="background" />For background</button>
@@ -106,10 +108,29 @@
             currentFunction = new Eraser(contextReal, contextDraft);
         });
 
-        $('#clear').click(function () {
+        $('#clear').click(() => {
             contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
         });
+
+        let undoClicked = false; //first click of Undo
+        $('#undo').click(() => {
+            var canvasPic = new Image();
+            if (undoClicked === false) { //if firstclick needs extra pop
+                undoList.pop(); 
+                undoClicked = true; // if not firstclick only needs to pop once so returns true
+            }
+            if (undoList.length == 0) {  // to clear the canvas when there is no more image stored
+                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                return;
+            } 
+            canvasPic.src = undoList.pop();
+            
+            canvasPic.onload = function () {
+                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                contextReal.drawImage(canvasPic, 0, 0); 
+            }
+        }); 
 
         $("#eyedropper").click(function () {
             currentFunction = new EyeDropper(contextReal);
