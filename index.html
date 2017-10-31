@@ -25,6 +25,7 @@
         <span class="btn btn-danger fa fa-paint-brush" id="eraser">Eraser</span>
         <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
         <span class="btn btn-primary fa fa-square" id="undo">Undo</span>
+        <span class="btn btn-primary fa fa-paint-brush" id="redo">Redo</span>
         <button><input type='text' id="strokestyle" />For strokeStyle</button>
         <button><input type='text' id="fillstyle" />For fillStyle</button>
         <button><input type='text' id="background" />For background</button>
@@ -100,6 +101,8 @@
                 contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
                 contextReal.drawImage(canvasPic, 0, 0); 
             }
+        }); 
+
         $("#eyedropper").click(function () {
             currentFunction = new EyeDropper(contextReal);
         });
