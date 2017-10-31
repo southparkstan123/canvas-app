@@ -5,11 +5,16 @@ let contextDraft = canvasDraft.getContext('2d');
 let currentFunction;
 let dragging = false;
 
+// added for Undo
+var undoList = new Array();
+var sShot = -1;
+
 $('#canvas-draft').mousedown(function (e) {
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
     currentFunction.onMouseDown([mouseX, mouseY], e);
-    dragging = true;
+
+    dragging = true; 
 });
 $('#canvas-draft').mousemove(function (e) {
     if (dragging) {
@@ -19,10 +24,15 @@ $('#canvas-draft').mousemove(function (e) {
     }
     currentFunction.onMouseMove(e, this);
 });
-$(document).mouseup(function (e) {
+$('#canvas-draft').mouseup(function (e) {
     let mouseX = e.pageX - $('#canvas-draft').get()[0].offsetLeft;
     let mouseY = e.pageY - $('#canvas-draft').get()[0].offsetTop;
     currentFunction.onMouseUp([mouseX, mouseY], e, dragging);
+
+    // added for Undo, calls below for every mouseup action
+    undoList.push(canvasReal.toDataURL());
+    // console.log(undoList) to check toDataURL captured;
+    
     dragging = false;
 });
 $('#canvas-draft').mouseleave(function (e) {
@@ -38,25 +48,8 @@ $('#canvas-draft').mouseenter(function (e) {
 });
 
 
-
-
-
 class PaintFunction {
-    constructor() {
-        /*this.strokeColor = ""
-        this.fillStyle = ""
-        this.strokeStyle=""
-        this.lineJoin=""
-        this.lineCap="" */
-
-    }
-
-    // StokeColor() {
-    //     $('element').StokeColor(function () {
-
-    //     })
-    // }
-
+    constructor() { }
     onMouseDown() { }
     onDragging() { }
     onMouseMove() { }
