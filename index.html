@@ -64,11 +64,9 @@
                     <option value = "italic">Italic</option>
                     <option value = "both">Both</option>
                 </select>
-                <label for="xpos">X-position:</label>
-                <input type="number" name="xpos" id="text-size" min=0 max=1200>px
-                <label for="ypos">Y-position:</label>
-                <input type="number" name="ypos" id="text-size" min=0 max=1200>px
                 <button type="submit">Add Text</button>
+                <label for="xpos">X-position: <span id="xpos"></span></label>
+                <label for="xpos">Y-position: <span id="ypos"></span></label>
             </form>
         </div>
 
@@ -78,6 +76,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
     <script src='scripts/spectrum.js'></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <link rel='stylesheet' href='css/spectrum.css' />
     <script type='text/javascript' src="scripts/canvas-common.js"></script>
@@ -100,6 +99,7 @@
     <link href="css/style.css" rel="stylesheet" type='text/css'>
 
     <script type='text/javascript'>
+        
         $('#drawing-rectangle').click(() => {
             currentFunction = new DrawingRectangle(contextReal, contextDraft);
         });
@@ -130,24 +130,37 @@
 
         });
 
-        $("#text-panel").hide();
         $("#text-tool").click(function(){
-            $("#text-panel").toggle();
+            currentFunction = new AddText(contextReal, contextDraft);
         });
+
+        //Listen the input fields change
+        $('select[name="fontFamily"]').change(function(e){
+            currentFunction.onChangeFontFamily(contextDraft,e.target.value);
+        })
+
+        $('input[name="text"]').change(function(e){
+            currentFunction.onChangeText(contextDraft,e.target.value);
+        })
+
+        $('select[name="fillOrStroke"]').change(function(e){
+            currentFunction.onChangeFillOrStroke(contextDraft,e.target.value);
+        })
+
+        $('select[name="style"]').change(function(e){
+            currentFunction.onChangeStyle(contextDraft,e.target.value);
+        })
+
+        $('select[name="size"]').change(function(e){
+            currentFunction.onChangeSize(contextDraft,e.target.value);
+        })
+
         $('#add-text').submit(function(e){
             e.preventDefault();
-
-            let text = e.target.text.value;
-            let size = e.target.size.value;
-            let fillOrStroke = e.target.fillOrStroke.value;
-            let fontFamily = e.target.fontFamily.value;
-            let style = e.target.style.value;
-            let xpos = e.target.xpos.value;
-            let ypos = e.target.ypos.value;
-
-            currentFunction = new AddText(contextReal);
-            currentFunction.addText(contextReal,text,fillOrStroke,fontFamily,size,style,xpos,ypos);
+            currentFunction.onSubmit();
+            this.reset();
         });  
+
 
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
