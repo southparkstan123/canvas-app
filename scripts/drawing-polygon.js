@@ -17,15 +17,25 @@ class DrawingPolygon extends PaintFunction {
             this.contextReal.moveTo(this.origX1, this.origY1);
             this.contextReal.lineTo(coord[0], coord[1]);
             this.contextReal.stroke();
+            this.contextReal.strokeStyle=this.strokeColor;
+            this.contextReal.fillStyle=this.fillColor;
+            //this.contextReal.fill();
             this.contextReal.closePath();
             this.origX1 = coord[0];
             this.origY1 = coord[1];
+
+
+
+
             this.state = "intermediate";
         } else if (Math.pow(Math.max(coord[0] - this.origX, coord[1] - this.origY), 2) < 40) {
             this.contextReal.beginPath();
             this.contextReal.moveTo(this.origX1, this.origY1);
             this.contextReal.lineTo(this.origX, this.origY);
             this.contextReal.stroke();
+            this.contextReal.strokeStyle=this.strokeColor;
+            this.contextReal.fillStyle=this.fillColor;
+            //this.contextReal.fill();
             this.contextReal.closePath();
             this.origX1 = coord[0];
             this.origY1 = coord[1];
@@ -42,6 +52,9 @@ class DrawingPolygon extends PaintFunction {
             this.contextDraft.moveTo(this.origX, this.origY);
             this.contextDraft.lineTo(coord[0], coord[1]);
             this.contextDraft.stroke();
+            this.contextDraft.strokeStyle=this.strokeColor;
+            this.contextDraft.fillStyle=this.fillColor;
+            //this.contextDraft.fill();
             this.contextDraft.closePath();
             console.log(this.state);
         }
@@ -54,7 +67,19 @@ class DrawingPolygon extends PaintFunction {
             this.contextDraft.moveTo(this.origX1, this.origY1);
             this.contextDraft.lineTo(coord[0], coord[1]);
             this.contextDraft.stroke();
+            this.contextDraft.strokeStyle=this.strokeColor;
+            this.contextDraft.fillStyle=this.fillColor
+            //this.contextDraft.fill();            
             this.contextDraft.closePath();
+
+// //draw a straight line to give fillcolor to the element
+//             this.contextDraft.beginPath();
+//             this.contextDraft.moveTo(this.origX, this.origY);
+//             this.contextDraft.lineTo(coord[0], coord[1]);
+//             this.contextDraft.stroke();
+//             this.contextDraft.lineWidth=0.1;
+//             this.contextDraft.closePath();
+
             console.log(this.state);
             if (Math.pow(Math.max(coord[0] - this.origX, coord[1] - this.origY), 2) < 40) {
                 this.contextDraft.strokeColor = '#F60000';
@@ -69,11 +94,23 @@ class DrawingPolygon extends PaintFunction {
             this.contextReal.moveTo(this.origX1, this.origY1);
             this.contextReal.lineTo(coord[0], coord[1]);
             this.contextReal.stroke();
+            this.contextReal.strokeStyle=this.strokeColor;
+            this.contextReal.fillStyle=this.fillColor;
+            //this.contextReal.fill();            
             this.contextReal.closePath();
             this.origX1 = coord[0];
             this.origY1 = coord[1];
             this.state = "step3"
             console.log(this.state);
+
+// //draw a straight line to give fillcolor to the element
+//             this.contextReal.beginPath();
+//             this.contextReal.moveTo(this.origX, this.origY);
+//             this.contextReal.lineTo(coord[0], coord[1]);
+//             this.contextReal.stroke();
+//             this.contextReal.lineWidth=0.1;
+//             this.contextReal.closePath();
+
 
         } else if (this.state === "intermediate") {
         } else if (this.state === "End") {
