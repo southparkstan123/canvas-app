@@ -5,11 +5,16 @@ let contextDraft = canvasDraft.getContext('2d');
 let currentFunction;
 let dragging = false;
 
+// added for Undo
+var undoList = new Array();
+var sShot = -1;
+
 $('#canvas-draft').mousedown(function (e) {
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
     currentFunction.onMouseDown([mouseX, mouseY], e);
-    dragging = true;
+
+    dragging = true; 
 });
 $('#canvas-draft').mousemove(function (e) {
     if (dragging) {
@@ -17,12 +22,19 @@ $('#canvas-draft').mousemove(function (e) {
         let mouseY = e.pageY - this.offsetTop;
         currentFunction.onDragging([mouseX, mouseY], e);
     }
-    currentFunction.onMouseMove(e, this);
+    let mouseX = e.pageX - this.offsetLeft;
+    let mouseY = e.pageY - this.offsetTop;
+    currentFunction.onMouseMove([mouseX, mouseY], e, this);
 });
-$(document).mouseup(function (e) {
+$('#canvas-draft').mouseup(function (e) {
     let mouseX = e.pageX - $('#canvas-draft').get()[0].offsetLeft;
     let mouseY = e.pageY - $('#canvas-draft').get()[0].offsetTop;
     currentFunction.onMouseUp([mouseX, mouseY], e, dragging);
+
+    // added for Undo, calls below for every mouseup action
+    undoList.push(canvasReal.toDataURL());
+    // console.log(undoList) to check toDataURL captured;
+    
     dragging = false;
 });
 $('#canvas-draft').mouseleave(function (e) {
@@ -38,24 +50,15 @@ $('#canvas-draft').mouseenter(function (e) {
 });
 
 
-
-
-
 class PaintFunction {
     constructor() {
-        /*this.strokeColor = ""
-        this.fillStyle = ""
-        this.strokeStyle=""
-        this.lineJoin=""
-        this.lineCap="" */
-
+        this.strokeColor = $('#strokestyle').spectrum('get'); //After using the eyedropper, we need these codes to make sure all the things are painted in our desired style.
+        this.fillStyle = $('#fillstyle').spectrum('get');
     }
 
-    // StokeColor() {
-    //     $('element').StokeColor(function () {
-
-    //     })
-    // }
+    get lineWidth() {
+        return document.querySelector('#linewidth').value
+    }
 
     onMouseDown() { }
     onDragging() { }
@@ -63,4 +66,4 @@ class PaintFunction {
     onMouseUp() { }
     onMouseLeave() { }
     onMouseEnter() { }
-}   
+}

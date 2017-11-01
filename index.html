@@ -22,13 +22,72 @@
         <span class="btn btn-info fa fa-paint-brush" id="drawing-ellipse">Drawing Ellipse</span>
         <span class="btn btn-danger fa fa-paint-brush" id="drawing-strokerectangle">Drawing StrokeRectangle</span>
         <span class="btn btn-danger fa fa-paint-brush" id="drawing-straight-line">Drawing Straight Line</span>
+        <span class="btn btn-danger fa fa-paint-brush" id="drawing-curve">Drawing Curve</span>
+        <span class="btn btn-danger fa fa-paint-brush" id="drawing-polygon">Drawing Polygon</span>
+
         <span class="btn btn-danger fa fa-paint-brush" id="eraser">Eraser</span>
         <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
+        <span class="btn btn-primary fa fa-square" id="undo">Undo</span>
+        <span class="btn btn-primary fa fa-paint-brush" id="redo">Redo</span>
         <button><input type='text' id="strokestyle" />For strokeStyle</button>
         <button><input type='text' id="fillstyle" />For fillStyle</button>
         <button><input type='text' id="background" />For background</button>
-        <!--<input class="linewidth" type="number" name="size" id="text-size" min=6 max=480>px-->
-
+        <span class="btn btn-danger fa fa-paint-brush" id="eyedropper">Eyedropper</span>
+        <input id="linewidth" type="range" orient="vertical" name="linewidth" min="1" max="100">
+        <select name="LineType" id="linetype">
+            <option value="butt">butt</option>
+            <option value="round">round</option>
+            <option value="square">square</option>
+        </select>
+        <select name="LineJoin" id="linejoin">
+            <option value="butt">miter</option>
+            <option value="round">round</option>
+            <option value="square">bevel</option>
+        </select>
+        <!--<select name="linedash" id="linedash">
+            <option value="[0]">No Dash</option>
+            <option value="[5]">Dash</option>
+        </select>-->
+        <span class="btn btn-danger fa fa-font" id="text-tool">Text Tool</span>
+        <div id="text-panel">
+            <form id="add-text">
+                <label for="text">Text:</label>
+                <input type="text" name="text" id="text">
+                <label for="size">Size:</label>
+                <select id = "size" name="size">
+                    <option value = "9" selected>9px</option>
+                    <option value = "12">12px</option>
+                    <option value = "14">14px</option>
+                    <option value = "16">16px</option>
+                    <option value = "20">20px</option>
+                    <option value = "48">48px</option>
+                    <option value = "72">72px</option>
+                    <option value = "96">96px</option>
+                    <option value = "144">144px</option>
+                    <option value = "200">200px</option>
+                </select>
+                <label for="fillOrStroke">Fill Or Stroke:</label>
+                <select id = "fillOrStroke" name="fillOrStroke">
+                    <option value = "fill" selected>fill</option>
+                    <option value = "stroke">stroke</option>
+                </select>
+                <label for="font-family">Font Family:</label>
+                <select id ="font-family" name="fontFamily">
+                    <option value = "Arial" selected>Arial</option>
+                    <option value = "Times New Roman">Times New Roman</option>
+                </select>
+                <label for="style">Style:</label>
+                <select id ="style" name="style">
+                    <option value = "normal" selected>Normal</option>
+                    <option value = "bold">Bold</option>
+                    <option value = "italic">Italic</option>
+                    <option value = "both">Both</option>
+                </select>
+                <button type="submit">Add Text</button>
+                <label for="xpos">X-position: <span id="xpos"></span></label>
+                <label for="xpos">Y-position: <span id="ypos"></span></label>
+            </form>
+        </div>
         <input type="file" id="fileUpload"/>
     </div>
 
@@ -44,13 +103,25 @@
     <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
     <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
     <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
+    <script type='text/javascript' src="scripts/drawing-curve.js"></script>
+    <script type='text/javascript' src="scripts/drawing-polygon.js"></script>
+
 
     <script type='text/javascript' src="scripts/eraser.js"></script>
-    <script type='text/javascript' src="scripts/strokestyle.js"></script>
-    <script type='text/javascript' src="scripts/fillstyle.js"></script>
 
-    <script type='text/javascript' src="scripts/background.js"></script>
+    <script type='text/javascript' src="scripts/setstrokestyle.js"></script>
+    <script type='text/javascript' src="scripts/setfillstyle.js"></script>
+    <script type='text/javascript' src="scripts/setbackground.js"></script>
+
+    <script type='text/javascript' src="scripts/eyedropper.js"></script>
+    <script type='text/javascript' src="scripts/setlinewidth.js"></script>
+    <script type='text/javascript' src="scripts/setlinetype.js"></script>
+    <script type='text/javascript' src="scripts/setlinejoin.js"></script>
+    <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
+    <script type='text/javascript' src="scripts/add-text.js"></script>
     <script type='text/javascript' src="scripts/upload-image.js"></script>
+
+
     <link href="css/style.css" rel="stylesheet" type='text/css'>
 
     <script type='text/javascript'>
@@ -69,14 +140,74 @@
         $('#drawing-straight-line').click(() => {
             currentFunction = new DrawingStraightLine(contextReal, contextDraft);
         });
+        $('#drawing-curve').click(() => {
+            currentFunction = new DrawingCurve(contextReal, contextDraft);
+        });
+        $('#drawing-polygon').click(() => {
+            currentFunction = new DrawingPolygon(contextReal, contextDraft);
+        });
         $('#eraser').click(function () {
             currentFunction = new Eraser(contextReal, contextDraft);
         });
 
-        $('#clear').click(function () {
+        $('#clear').click(() => {
             contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
         });
+
+        let undoClicked = false; //first click of Undo
+        $('#undo').click(() => {
+            var canvasPic = new Image();
+            if (undoClicked === false) { //if firstclick needs extra pop
+                undoList.pop(); 
+                undoClicked = true; // if not firstclick only needs to pop once so returns true
+            }
+            if (undoList.length == 0) {  // to clear the canvas when there is no more image stored
+                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                return;
+            } 
+            canvasPic.src = undoList.pop();
+            
+            canvasPic.onload = function () {
+                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                contextReal.drawImage(canvasPic, 0, 0); 
+            }
+        }); 
+
+        $("#eyedropper").click(function () {
+            currentFunction = new EyeDropper(contextReal);
+        });
+
+        $("#text-tool").click(function(){
+            currentFunction = new AddText(contextReal, contextDraft);
+        });
+
+        //Listen the input fields change
+        $('select[name="fontFamily"]').change(function(e){
+            currentFunction.onChangeFontFamily(contextDraft,e.target.value);
+        })
+
+        $('input[name="text"]').change(function(e){
+            currentFunction.onChangeText(contextDraft,e.target.value);
+        })
+
+        $('select[name="fillOrStroke"]').change(function(e){
+            currentFunction.onChangeFillOrStroke(contextDraft,e.target.value);
+        })
+
+        $('select[name="style"]').change(function(e){
+            currentFunction.onChangeStyle(contextDraft,e.target.value);
+        })
+
+        $('select[name="size"]').change(function(e){
+            currentFunction.onChangeSize(contextDraft,e.target.value);
+        })
+
+        $('#add-text').submit(function(e){
+            e.preventDefault();
+            currentFunction.onSubmit();
+            this.reset();
+        });  
 
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>

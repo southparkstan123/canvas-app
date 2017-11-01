@@ -5,17 +5,14 @@ class Eraser extends PaintFunction {
     }
 
     onMouseDown(coord, event, originalcolor) {
-
-        // var backgroundcolor = $('#canvas-real').css("backgroundColor")
-        // this.context.strokeStyle = backgroundcolor;
         this.context.beginPath();
-
     }
+
     onDragging(coord, event) {
         this.context.globalCompositeOperation = "destination-out"; //can change the color of the background after Change bg color function
         this.draw(coord[0], coord[1]);
         this.context.globalCompositeOperation = 'source-over';
-
+        this.context.lineCap = "round";
     }
 
     onMouseMove() { }
@@ -28,6 +25,7 @@ class Eraser extends PaintFunction {
             this.context.closePath();
         }
     }
+
     onMouseEnter() { }
 
     draw(x, y) {
