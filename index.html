@@ -175,32 +175,30 @@
 
         $("#text-tool").click(function(){
             currentFunction = new AddText(contextReal, contextDraft);
+            //Listen the input fields change
+            $('select[name="fontFamily"]').change(function(e){
+                currentFunction.onChangeFontFamily(e.target.value);
+            })
+
+            $('select[name="fillOrStroke"]').change(function(e){
+                currentFunction.onChangeFillOrStroke(e.target.value);
+            })
+
+            $('select[name="style"]').change(function(e){
+                currentFunction.onChangeStyle(e.target.value);
+            })
+
+            $('select[name="size"]').change(function(e){
+                currentFunction.onChangeSize(e.target.value);
+            })
+
+            $('select[name="lineWidth"]').change(function(e){
+                currentFunction.onChangeLineWidth(e.target.value);
+            })
+
         });
 
-        //Listen the input fields change
-        $('select[name="fontFamily"]').change(function(e){
-            currentFunction.onChangeFontFamily(e.target.value);
-        })
 
-        $('input[name="text"]').change(function(e){
-            currentFunction.onChangeText(e.target.value);
-        })
-
-        $('select[name="fillOrStroke"]').change(function(e){
-            currentFunction.onChangeFillOrStroke(e.target.value);
-        })
-
-        $('select[name="style"]').change(function(e){
-            currentFunction.onChangeStyle(e.target.value);
-        })
-
-        $('select[name="size"]').change(function(e){
-            currentFunction.onChangeSize(e.target.value);
-        })
-
-        $('select[name="lineWidth"]').change(function(e){
-            currentFunction.onChangeLineWidth(e.target.value);
-        })
 
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
