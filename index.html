@@ -91,6 +91,7 @@
     <script type='text/javascript' src="scripts/setlinewidth.js"></script>
     <script type='text/javascript' src="scripts/setlinetype.js"></script>
     <script type='text/javascript' src="scripts/setlinejoin.js"></script>
+    <script type='text/javascript' src="scripts/upload-image.js"></script>
     <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
 
 
@@ -152,14 +153,20 @@
         });
 
         $('#upload').click(()=>{
-            var storageRef = firebase.storage().ref();
-            let canvas = document.getElementById('canvas-real');
-            canvas.toBlob(function(blob) {
-                var canvasRef = storageRef.child('canvas.jpg');
-                canvasRef.put(blob).then(function(snapshot) {
-                    console.log('Uploaded a blob or file!');
-                });
-            }, 'image/jpeg', 0.95);
+            let canvasPic = new Image();
+
+            currentFunction = new UploadImage(canvasReal);
+            currentFunction.uploadImage();
+
+            if(undoList.length == 0){
+                return;
+            }
+            canvasPic.src = undoList.pop();
+            
+            canvasPic.onload = function () {
+                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                contextReal.drawImage(canvasPic, 0, 0); 
+            }
         });
 
         currentFunction = new DrawingLine(contextReal, contextDraft);
