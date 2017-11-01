@@ -12,21 +12,34 @@ class DrawingPolygon extends PaintFunction {
             this.origY = coord[1];
             console.log(this.state);
             this.state = "step2";
-        }//else if (this.state==='tomovingphase'{
-        //     this.orig
-        // })
+        } else if (Math.pow(Math.max(coord[0] - this.origX, coord[1] - this.origY), 2) > 40) { //calcalate if the line falls into an area of radius of 5px;
+            this.contextReal.beginPath();
+            this.contextReal.moveTo(this.origX1, this.origY1);
+            this.contextReal.lineTo(coord[0], coord[1]);
+            this.contextReal.stroke();
+            this.contextReal.closePath();
+            this.origX1 = coord[0];
+            this.origY1 = coord[1];
+            this.state = "intermediate";
+        } else if (Math.pow(Math.max(coord[0] - this.origX, coord[1] - this.origY), 2) < 40) {
+            this.contextReal.beginPath();
+            this.contextReal.moveTo(this.origX1, this.origY1);
+            this.contextReal.lineTo(this.origX, this.origY);
+            this.contextReal.stroke();
+            this.contextReal.closePath();
+            this.origX1 = coord[0];
+            this.origY1 = coord[1];
+            this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+            this.state = 'EndStage';
+
+        }
     }
 
     onDragging(coord, event) {
-
-    }
-
-    onMouseMove(coord, event) {
-        if (this.state === "step2" || this.state === "intermediate") {
-
+        if (this.state === 'step2') {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             this.contextDraft.beginPath();
-            this.contextDraft.moveTo(this.origX1, this.origY1);
+            this.contextDraft.moveTo(this.origX, this.origY);
             this.contextDraft.lineTo(coord[0], coord[1]);
             this.contextDraft.stroke();
             this.contextDraft.closePath();
@@ -34,39 +47,42 @@ class DrawingPolygon extends PaintFunction {
         }
     }
 
-    onMouseUp(coord, event) {
-
-        if (this.state === "step2") {
-            this.origX2 = coord[0];
-            this.origY2 = coord[1];
+    onMouseMove(coord, event) {
+        if (this.state === "step3" || this.state === "intermediate") {
+            this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             this.contextDraft.beginPath();
             this.contextDraft.moveTo(this.origX1, this.origY1);
             this.contextDraft.lineTo(coord[0], coord[1]);
             this.contextDraft.stroke();
             this.contextDraft.closePath();
+            console.log(this.state);
+            if (Math.pow(Math.max(coord[0] - this.origX, coord[1] - this.origY), 2) < 40) {
+                this.contextDraft.strokeColor = '#F60000';
+            }
+        }
+    }
 
+    onMouseUp(coord, event) {
+        if (this.state === "step2") {
+
+            this.contextReal.beginPath();
+            this.contextReal.moveTo(this.origX1, this.origY1);
+            this.contextReal.lineTo(coord[0], coord[1]);
+            this.contextReal.stroke();
+            this.contextReal.closePath();
+            this.origX1 = coord[0];
+            this.origY1 = coord[1];
             this.state = "step3"
+            console.log(this.state);
 
-         }// else if (this.state === "intermediate") {
-        //     this.origX3 = coord[0];
-        //     this.origY3 = coord[1];
-        //     this.contextDraft.beginPath();
-        //     this.contextDraft.moveTo(this.origX2, this.origY2);
-        //     this.contextDraft.lineTo(this.origX3, this.origY3);
-        //     this.contextDraft.stroke();
-        //     this.contextDraft.closePath();
-        //     this.state = "intermediate";
-        // }
-
-
-
+        } else if (this.state === "intermediate") {
+        } else if (this.state === "End") {
+            this.state === 'start';
+        }
 
     }
-    onMouseLeave(coord, event, dragging) {
-
-    }
-    onMouseEnter() {
-    }
+    onMouseLeave() { }
+    onMouseEnter() { }
 
 
 }
