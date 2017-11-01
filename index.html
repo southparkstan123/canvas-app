@@ -51,8 +51,6 @@
         <span class="btn btn-danger fa fa-font" id="text-tool">Text Tool</span>
         <div id="text-panel">
             <form id="add-text">
-                <label for="text">Text:</label>
-                <input type="text" name="text" id="text">
                 <label for="size">Size:</label>
                 <select id = "size" name="size">
                     <option value = "9" selected>9px</option>
@@ -83,7 +81,6 @@
                     <option value = "italic">Italic</option>
                     <option value = "both">Both</option>
                 </select>
-                <button type="submit">Add Text</button>
                 <label for="xpos">X-position: <span id="xpos"></span></label>
                 <label for="xpos">Y-position: <span id="ypos"></span></label>
             </form>
@@ -117,7 +114,7 @@
     <script type='text/javascript' src="scripts/setlinetype.js"></script>
     <script type='text/javascript' src="scripts/setlinejoin.js"></script>
     <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
-    <script type='text/javascript' src="scripts/add-text.js"></script>
+    <script type='text/javascript' src="scripts/add-text.1.js"></script>
 
 
     <link href="css/style.css" rel="stylesheet" type='text/css'>
@@ -182,30 +179,28 @@
 
         //Listen the input fields change
         $('select[name="fontFamily"]').change(function(e){
-            currentFunction.onChangeFontFamily(contextDraft,e.target.value);
+            currentFunction.onChangeFontFamily(e.target.value);
         })
 
         $('input[name="text"]').change(function(e){
-            currentFunction.onChangeText(contextDraft,e.target.value);
+            currentFunction.onChangeText(e.target.value);
         })
 
         $('select[name="fillOrStroke"]').change(function(e){
-            currentFunction.onChangeFillOrStroke(contextDraft,e.target.value);
+            currentFunction.onChangeFillOrStroke(e.target.value);
         })
 
         $('select[name="style"]').change(function(e){
-            currentFunction.onChangeStyle(contextDraft,e.target.value);
+            currentFunction.onChangeStyle(e.target.value);
         })
 
         $('select[name="size"]').change(function(e){
-            currentFunction.onChangeSize(contextDraft,e.target.value);
+            currentFunction.onChangeSize(e.target.value);
         })
 
-        $('#add-text').submit(function(e){
-            e.preventDefault();
-            currentFunction.onSubmit();
-            this.reset();
-        });  
+        $('select[name="lineWidth"]').change(function(e){
+            currentFunction.onChangeLineWidth(e.target.value);
+        })
 
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
