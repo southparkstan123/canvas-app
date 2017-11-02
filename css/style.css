@@ -1,0 +1,194 @@
+.canvas{
+    border:3px black solid;
+    position:absolute;
+    /*
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    */
+    cursor: crosshair;
+    padding: 0 20px;
+    margin: 0 20px;
+}
+
+#canvas-real{
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#canvas-draft{
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow:hidden;
+}
+<<<<<<< HEAD
+#canvas-container{
+    height:768px;
+    margin: 5px;
+}
+
+.img-responsive{
+    display: inline-block;
+font: normal normal normal 14px;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+=======
+
+#canvas-container {
+    float: right;
+    height: 500px;
+    width: 75%;
+    margin: 0px;
+    padding: 0px;
+    border: 3px solid green;
+}
+
+/* Clearfix */
+
+
+
+
+/* Menu  */
+
+.menu {
+    padding: 10px 10px;
+    width: 20%;
+    float: left;
+    border: 2px solid red;
+}
+
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: " ";
+}
+
+
+/* Menu Buttons  */
+
+#row1 button,
+#row2 button,
+#row3 button,
+#row4 button,
+#row5 button {
+    font-size: 4vw;
+    width: 60px;
+    height: 60px;
+    background-color: grey;  
+}
+
+#row6 button {
+    background-color: red;
+    font-size: 4vw;
+    width: 60px;
+    height: 60px;
+}
+
+
+#row1,
+#row2,
+#row3,
+#row4,
+#row5,
+#row6,
+#selectors div {
+    display: flex;
+    justify-content: center;
+}
+
+#selectors {
+    margin: 10px 0;
+}
+
+#selectors button {
+    width: 95%;
+}
+
+.sp-replacer {
+    padding: 4px 0;
+    width: 40%;
+    
+}
+
+#backg button {
+    margin-bottom: 10px;
+}
+
+#linewidth {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* Menu Buttons - pop up message */
+
+#drawing-line {
+    position: relative;
+}
+
+#drawing-line:hover:after {
+    content: "Draw Line";
+    font-size: 2vh;
+    padding: 1vh;
+    border-radius: 5px;
+    background: #33cc99;
+    color: white;
+    font-weight: bold;
+    display:block;
+    position:absolute;
+    top: 0;
+    left: 60px;
+    text-align:center;
+    width: 80px;
+}
+
+#linewidth:hover:after {
+    content: "Line Width";
+    font-size: 2vh;
+    padding: 1vh;
+    border-radius: 5px;
+    background: #33cc99;
+    color: white;
+    font-weight: bold;
+    display:block;
+    position:absolute;
+    top: 0;
+    left: 70px;
+    text-align:center;
+    width: 80px;
+}
+
+
+
+
+
+/*  
+
+
+
+.col-sm-4 .buttons {
+    padding: 15px;
+    width: 90%;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    
+}
+ */
+
+
+
+
+>>>>>>> 7fb67265f0cd4a503d5fa6a64c07922391df3dc9
