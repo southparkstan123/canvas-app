@@ -161,7 +161,12 @@
 
         </div>
 
+<<<<<<< HEAD
                 
+=======
+        <button id="drawing-random-dots">Random Dots</button>
+        <button id="drawing-random-line">Random Line</button>
+>>>>>>> 5a74244a6455acc273918cf95415d148d721c4b4
 
 
         <div id="canvas-container">
@@ -182,7 +187,7 @@
 
     <link rel='stylesheet' href='css/spectrum.css' />
     <link href="css/style.css" rel="stylesheet" type='text/css'>
-
+    <script type='text/javascript' src="scripts/hammer.js"></script>
     <script type='text/javascript' src="scripts/canvas-common.js"></script>
     <script type='text/javascript' src="scripts/drawing-line.js"></script>
     <script type='text/javascript' src="scripts/drawing-ellipse.js"></script>
@@ -191,7 +196,8 @@
     <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
     <script type='text/javascript' src="scripts/drawing-curve.js"></script>
     <script type='text/javascript' src="scripts/drawing-polygon.js"></script>
-    <script type='text/javascript' src="scripts/drawing-random.js"></script>
+    <script type='text/javascript' src="scripts/drawing-random-dots.js"></script>
+    <script type='text/javascript' src="scripts/drawing-random-line.js"></script>
 
 
     <script type='text/javascript' src="scripts/eraser.js"></script>
@@ -205,7 +211,11 @@
     <script type='text/javascript' src="scripts/setlinetype.js"></script>
     <script type='text/javascript' src="scripts/setlinejoin.js"></script>
     <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
+<<<<<<< HEAD
     <!-- <script type='text/javascript' src="scripts/add-text.1.js"></script> -->
+=======
+    <!--<script type='text/javascript' src="scripts/add-text.1.js"></script>-->
+>>>>>>> 5a74244a6455acc273918cf95415d148d721c4b4
 
 
 
@@ -235,9 +245,13 @@
             currentFunction = new DrawingPolygon(contextReal, contextDraft);
         });
 
-        $('#drawing-random').click(() => {
-            currentFunction = new DrawingRandom(contextReal, contextDraft);
+        $('#drawing-random-dots').click(() => {
+            currentFunction = new DrawingRandomDots(contextReal, contextDraft);
         });
+
+        // $('#drawing-random-line').click(() => {
+        //     currentFunction = new DrawingRandomColorLine(contextReal, contextDraft);
+        // });
 
         $('#eraser').click(function () {
             currentFunction = new Eraser(contextReal, contextDraft);
@@ -249,7 +263,9 @@
         });
 
         let undoClicked = false; //first click of Undo
-        $('#undo').click(() => { console.log("here");
+
+
+        $('#undo').click(() => {console.log("here")
             var canvasPic = new Image();
             if (undoClicked === false) { //if firstclick needs extra pop
                 undoList.pop();
