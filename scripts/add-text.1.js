@@ -7,34 +7,41 @@ class AddText extends PaintFunction{
 
     onMouseDown(coord,event) {
         this.canvas = document.getElementById("canvas-draft");
-
-        // this.origX = coord[0];
-        // this.origY = coord[1];
+        this.strokeColor = $('#strokestyle').spectrum('get');
+        this.fontFamily=$('#font-family').val();
+        this.style=$('#style').val();
+        this.fontSize=$('#size').val() + 'px';
 
         //Reset
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
 
-        // var x = event.clientX - this.canvas.offsetLeft,
-        //     y = event.clientY - this.canvas.offsetTop;
-        
         let textarea = $('<textarea></textarea>');
 
-        textarea.draggable({
-            cancel: ""
+        textarea.draggable({ //from jquery UI
+            cancel: "",
+            start:function (){
+                $("#textarea").focus();
+            },
+            stop:function(){
+                $('#textarea').focus();
+            }
         }).css({
             left: coord[0],
-            top: coord[1]
+            top: coord[1],
+            fontFamily: this.fontFamily,
+            fontSize:this.size,
+            width:'150px',
+            height:'70px',
         });  
         
-        $('#canvas-container').append(textarea);
+        $
 
-        
+        $('#canvas-container').append(textarea);
 
     }
 
 
-    addText(context, data, isDraft){
-
+    addText(coord, data){
 
     }
 

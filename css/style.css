@@ -22,3 +22,11 @@ body{
     height:768px;
     margin: 5px;
 }
+
+.img-responsive{
+    display: inline-block;
+font: normal normal normal 14px;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}

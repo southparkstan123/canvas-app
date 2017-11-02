@@ -1,11 +1,12 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
         crossorigin="anonymous">
+    <link href="css/bootstrap.icon-large.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
         crossorigin="anonymous">
 
@@ -18,22 +19,26 @@
     </div>
     <div class="buttons">
         <span class="btn btn-primary fa fa-square" id="drawing-rectangle">Drawing Rectangle</span>
-        <span class="btn btn-info fa fa-paint-brush" id="drawing-line">Drawing Line</span>
-        <span class="btn btn-info fa fa-paint-brush" id="drawing-ellipse">Drawing Ellipse</span>
-        <span class="btn btn-danger fa fa-paint-brush" id="drawing-strokerectangle">Drawing StrokeRectangle</span>
-        <span class="btn btn-danger fa fa-paint-brush" id="drawing-straight-line">Drawing Straight Line</span>
-        <span class="btn btn-danger fa fa-paint-brush" id="drawing-curve">Drawing Curve</span>
-        <span class="btn btn-danger fa fa-paint-brush" id="drawing-polygon">Drawing Polygon</span>
+        <span class="btn btn-info fa fa-pencil" id="drawing-line">Drawing Line</span>
+        <span class="btn btn-info fa fa-circle" id="drawing-ellipse">Drawing Ellipse</span>
+        <span class="btn btn-danger fa fa-square-o" id="drawing-strokerectangle">Drawing StrokeRectangle</span>
+        <span class="btn btn-danger" id="drawing-straight-line" aria-hidden="true"><img class="img-responsive" src="image/glyphicons-98-vector-path-line.png"></img>Drawing Straight Line</span>
+        <span class=" btn btn-danger" id="drawing-curve " aria-hidden="true"><img class="img-responsive"src="image/glyphicons-99-vector-path-curve.png"></img>Drawing Curve</span>
+        <span class="btn btn-danger" id="drawing-polygon" aria-hidden="true"><img class="img-responsive"src="image/glyphicons-97-vector-path-polygon.png"></img> Polygon</span>
+        <span class="btn btn-danger" id="drawing-random" aria-hidden="true"><img class="img-responsive"src="image/glyphicons-97-vector-path-polygon.png"></img> random</span>
 
-        <span class="btn btn-danger fa fa-paint-brush" id="eraser">Eraser</span>
-        <span class="btn btn-danger fa fa-paint-brush" id="clear">Clear</span>
-        <span class="btn btn-primary fa fa-square" id="undo">Undo</span>
-        <span class="btn btn-primary fa fa-paint-brush" id="redo">Redo</span>
+
+        <span class="btn btn-danger fa fa-eraser" id="eraser">Eraser</span>
+        <span class="btn btn-danger fa fa-trash" id="clear">Clear</span>
+        <span class="btn btn-primary fa fa-undo" id="undo">Undo</span>
+        <span class="btn btn-primary fa fa-repeat" id="redo">Redo</span>
         <button><input type='text' id="strokestyle" />For strokeStyle</button>
         <button><input type='text' id="fillstyle" />For fillStyle</button>
         <button><input type='text' id="background" />For background</button>
         <span class="btn btn-danger fa fa-paint-brush" id="eyedropper">Eyedropper</span>
-        <input id="linewidth" type="range" orient="vertical" name="linewidth" min="1" max="100">
+        <div class="range-slider">
+            <input id="linewidth" orient="vertical" type="range" name="linewidth" min="1" max="100">
+        </div>
         <select name="LineType" id="linetype">
             <option value="butt">butt</option>
             <option value="round">round</option>
@@ -54,7 +59,7 @@
                 <label for="text">Text:</label>
                 <input type="text" name="text" id="text">
                 <label for="size">Size:</label>
-                <select id = "size" name="size">
+                <select id="size" name="size">
                     <option value = "9" selected>9px</option>
                     <option value = "12">12px</option>
                     <option value = "14">14px</option>
@@ -67,17 +72,17 @@
                     <option value = "200">200px</option>
                 </select>
                 <label for="fillOrStroke">Fill Or Stroke:</label>
-                <select id = "fillOrStroke" name="fillOrStroke">
+                <select id="fillOrStroke" name="fillOrStroke">
                     <option value = "fill" selected>fill</option>
                     <option value = "stroke">stroke</option>
                 </select>
                 <label for="font-family">Font Family:</label>
-                <select id ="font-family" name="fontFamily">
+                <select id="font-family" name="fontFamily">
                     <option value = "Arial" selected>Arial</option>
                     <option value = "Times New Roman">Times New Roman</option>
                 </select>
                 <label for="style">Style:</label>
-                <select id ="style" name="style">
+                <select id="style" name="style">
                     <option value = "normal" selected>Normal</option>
                     <option value = "bold">Bold</option>
                     <option value = "italic">Italic</option>
@@ -94,6 +99,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
     <script src='scripts/spectrum.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
 
     <link rel='stylesheet' href='css/spectrum.css' />
     <script type='text/javascript' src="scripts/canvas-common.js"></script>
@@ -104,6 +110,7 @@
     <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
     <script type='text/javascript' src="scripts/drawing-curve.js"></script>
     <script type='text/javascript' src="scripts/drawing-polygon.js"></script>
+    <script type='text/javascript' src="scripts/drawing-random.js"></script>
 
 
     <script type='text/javascript' src="scripts/eraser.js"></script>
@@ -118,6 +125,7 @@
     <script type='text/javascript' src="scripts/setlinejoin.js"></script>
     <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
     <script type='text/javascript' src="scripts/add-text.js"></script>
+
 
 
     <link href="css/style.css" rel="stylesheet" type='text/css'>
@@ -144,6 +152,10 @@
         $('#drawing-polygon').click(() => {
             currentFunction = new DrawingPolygon(contextReal, contextDraft);
         });
+        $('#drawing-random').click(() => {
+            currentFunction = new DrawingRandom(contextReal, contextDraft);
+        });
+
         $('#eraser').click(function () {
             currentFunction = new Eraser(contextReal, contextDraft);
         });
@@ -157,55 +169,55 @@
         $('#undo').click(() => {
             var canvasPic = new Image();
             if (undoClicked === false) { //if firstclick needs extra pop
-                undoList.pop(); 
+                undoList.pop();
                 undoClicked = true; // if not firstclick only needs to pop once so returns true
             }
             if (undoList.length == 0) {  // to clear the canvas when there is no more image stored
                 contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
                 return;
-            } 
+            }
             canvasPic.src = undoList.pop();
-            
+
             canvasPic.onload = function () {
                 contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
-                contextReal.drawImage(canvasPic, 0, 0); 
+                contextReal.drawImage(canvasPic, 0, 0);
             }
-        }); 
+        });
 
         $("#eyedropper").click(function () {
             currentFunction = new EyeDropper(contextReal);
         });
 
-        $("#text-tool").click(function(){
+        $("#text-tool").click(function () {
             currentFunction = new AddText(contextReal, contextDraft);
         });
 
         //Listen the input fields change
-        $('select[name="fontFamily"]').change(function(e){
-            currentFunction.onChangeFontFamily(contextDraft,e.target.value);
+        $('select[name="fontFamily"]').change(function (e) {
+            currentFunction.onChangeFontFamily(contextDraft, e.target.value);
         })
 
-        $('input[name="text"]').change(function(e){
-            currentFunction.onChangeText(contextDraft,e.target.value);
+        $('input[name="text"]').change(function (e) {
+            currentFunction.onChangeText(contextDraft, e.target.value);
         })
 
-        $('select[name="fillOrStroke"]').change(function(e){
-            currentFunction.onChangeFillOrStroke(contextDraft,e.target.value);
+        $('select[name="fillOrStroke"]').change(function (e) {
+            currentFunction.onChangeFillOrStroke(contextDraft, e.target.value);
         })
 
-        $('select[name="style"]').change(function(e){
-            currentFunction.onChangeStyle(contextDraft,e.target.value);
+        $('select[name="style"]').change(function (e) {
+            currentFunction.onChangeStyle(contextDraft, e.target.value);
         })
 
-        $('select[name="size"]').change(function(e){
-            currentFunction.onChangeSize(contextDraft,e.target.value);
+        $('select[name="size"]').change(function (e) {
+            currentFunction.onChangeSize(contextDraft, e.target.value);
         })
 
-        $('#add-text').submit(function(e){
+        $('#add-text').submit(function (e) {
             e.preventDefault();
             currentFunction.onSubmit();
             this.reset();
-        });  
+        });
 
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
