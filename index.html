@@ -131,7 +131,8 @@
 
         </div>
 
-                <button id="drawing-random">Random</button>
+        <button id="drawing-random-dots">Random Dots</button>
+        <button id="drawing-random-line">Random Line</button>
 
 
         <div id="canvas-container">
@@ -161,7 +162,8 @@
     <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
     <script type='text/javascript' src="scripts/drawing-curve.js"></script>
     <script type='text/javascript' src="scripts/drawing-polygon.js"></script>
-    <script type='text/javascript' src="scripts/drawing-random.js"></script>
+    <script type='text/javascript' src="scripts/drawing-random-dots.js"></script>
+    <script type='text/javascript' src="scripts/drawing-random-line.js"></script>
 
 
     <script type='text/javascript' src="scripts/eraser.js"></script>
@@ -205,9 +207,13 @@
             currentFunction = new DrawingPolygon(contextReal, contextDraft);
         });
 
-        $('#drawing-random').click(() => {
-            currentFunction = new DrawingRandom(contextReal, contextDraft);
+        $('#drawing-random-dots').click(() => {
+            currentFunction = new DrawingRandomDots(contextReal, contextDraft);
         });
+
+        // $('#drawing-random-line').click(() => {
+        //     currentFunction = new DrawingRandomColorLine(contextReal, contextDraft);
+        // });
 
         $('#eraser').click(function () {
             currentFunction = new Eraser(contextReal, contextDraft);
