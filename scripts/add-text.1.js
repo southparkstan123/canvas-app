@@ -51,7 +51,8 @@ class AddText extends PaintFunction{
                 "top": coord[1],
                 "z-index": "1",
                 "position": "absolute",
-                "border": "1px dashed gray"
+                "border": "1px dashed gray",
+                "background": "transparent"
             });
         }else{
             this.text = this.input["0"].value;
