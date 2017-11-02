@@ -178,7 +178,7 @@
 
     <link rel='stylesheet' href='css/spectrum.css' />
     <link href="css/style.css" rel="stylesheet" type='text/css'>
-
+    <script type='text/javascript' src="scripts/hammer.js"></script>
     <script type='text/javascript' src="scripts/canvas-common.js"></script>
     <script type='text/javascript' src="scripts/drawing-line.js"></script>
     <script type='text/javascript' src="scripts/drawing-ellipse.js"></script>
@@ -202,7 +202,7 @@
     <script type='text/javascript' src="scripts/setlinetype.js"></script>
     <script type='text/javascript' src="scripts/setlinejoin.js"></script>
     <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
-    <script type='text/javascript' src="scripts/add-text.1.js"></script>
+    <!--<script type='text/javascript' src="scripts/add-text.1.js"></script>-->
 
 
 
@@ -250,7 +250,7 @@
         });
 
         let undoClicked = false; //first click of Undo
-        $('#undo').click(() => {
+        $('#undo').click(() => {console.log("here")
             var canvasPic = new Image();
             if (undoClicked === false) { //if firstclick needs extra pop
                 undoList.pop();
