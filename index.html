@@ -81,8 +81,6 @@
                     <option value = "italic">Italic</option>
                     <option value = "both">Both</option>
                 </select>
-                <label for="xpos">X-position: <span id="xpos"></span></label>
-                <label for="xpos">Y-position: <span id="ypos"></span></label>
             </form>
         </div>
     </div>
@@ -175,6 +173,7 @@
 
         $("#text-tool").click(function(){
             currentFunction = new AddText(contextReal, contextDraft);
+            currentFunction.reset();
             //Listen the input fields change
             $('select[name="fontFamily"]').change(function(e){
                 currentFunction.onChangeFontFamily(e.target.value);
