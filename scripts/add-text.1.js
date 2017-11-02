@@ -14,10 +14,11 @@ class AddText extends PaintFunction{
         this.fontStyle = 'normal';
         this.text = '';
         this.input = $('<input/>',{type:"text",name:"input",value:"",id:"inputBox"});
+        this.isEditing = true;
 
         $('select[name="fontFamily"]').val(this.fontFamily);
-        $('select[name="fontWeight"]').val(this.fontWeight);
-        $('select[name="fontStyle"]').val(this.fontStyle);
+        $('select[name="style"]').val(this.fontStyle);
+        $('select[name="size"]').val(this.fontSize);
         $('select[name="fillOrStroke"]').val("fill");
 
     }
@@ -31,7 +32,15 @@ class AddText extends PaintFunction{
         //Reset
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
 
-        if(this.input["0"].value == ""){
+        //If the canvas has input box, isEditing become true
+        if($('#inputBox').length != 0){
+            this.isEditing = true;
+        }else{
+            this.isEditing = false;
+        }
+
+        if(this.input["0"].value == "" && !this.isEditing){
+
 
             this.reset();
 
@@ -42,11 +51,13 @@ class AddText extends PaintFunction{
                 "top": coord[1],
                 "z-index": "1",
                 "position": "absolute",
-                "border": "1px dashed gray"
+                "border": "1px dashed gray",
+                "background": "transparent"
             });
         }else{
             this.text = this.input["0"].value;
-            this.fontSize = this.input["0"].style.fontSize;
+            //this.fontSize = this.input["0"].style.fontSize;
+
 
             $('#inputBox').remove();
             this.addText(this.contextDraft, this.text, coord[0], coord[1], this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);
@@ -55,7 +66,7 @@ class AddText extends PaintFunction{
     }
 
     addText(context, text, xpos, ypos, isStroke, fontSize, fontStyle, fontWeight, fontFamily){
-        context.font = `${fontStyle} ${fontWeight} ${fontSize} ${fontFamily}`;
+        context.font = `${fontStyle} ${fontWeight} ${fontSize}px ${fontFamily}`;
         context.strokeStyle = this.strokeColor;
         context.fillStyle = this.fillColor;
 
@@ -141,6 +152,10 @@ class AddText extends PaintFunction{
     }
 
     onDblClick(event){
+<<<<<<< HEAD
+        this.isEditing = false;
+=======
+>>>>>>> 748613b73d8258f1c7475f1ba0fdb9125dda6f95
         this.addText(this.contextReal, this.text, this.origX, this.origY, this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);
         $('#inputBox').remove();
 

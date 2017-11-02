@@ -19,40 +19,99 @@
             <div id="row1">
                 <button class="fa fa-paint-brush" id="drawing-line"></button>
                 <button class="fa fa-pencil" id="drawing-straight-line"></button>
+                <button class="btn btn-danger fa fa-circle" id="drawing-curve">Curve L</button>
+                <button class="fa fa-circle" id="drawing-ellipse"></button>
             </div>
 
             <div id="row2">
-                <button class="btn btn-danger fa fa-circle" id="drawing-curve">Curve L</button>
-                <button class="fa fa-circle" id="drawing-ellipse">Circle</button>
-            </div>
-
-            <div id="row3">
                 <button class="fa fa-stop" id="drawing-rectangle"></button>
                 <button class="fa fa-square-o" id="drawing-strokerectangle"></button>
+                <button class="fa fa-caret-right" id="drawing-polygon"></button>
+                <button class="btn btn-danger fa fa-paint-brush" id="eyedropper"></button>
             </div>
 
-            <div id="row4">
-                <button class="fa fa-caret-right" id="drawing-polygon">P</button>
-                <button class="btn btn-danger fa fa-paint-brush" id="eyedropper">E</button>
+            <!-- Font -->
+            <div id="textbox">
+                <div id="row5">
+                    <button class="fa fa-font" id="text-tool"></button>
+                </div>
+
+                <div id="text-panel">
+                    <form id="add-text">
+
+                        <div id="sizerow">
+                            <label for="size">Size:</label>
+                            <select id="size" name="size">
+                        <option value = "9" selected>9px</option>
+                        <option value = "12">12px</option>
+                        <option value = "14">14px</option>
+                        <option value = "16">16px</option>
+                        <option value = "20">20px</option>
+                        <option value = "48">48px</option>
+                        <option value = "72">72px</option>
+                        <option value = "96">96px</option>
+                        <option value = "144">144px</option>
+                        <option value = "200">200px</option>
+                    </select>
+                        </div>
+
+                        <div id="fosrow">
+                            <label for="fillOrStroke">Fill Or Stroke:</label>
+                            <select id="fillOrStroke" name="fillOrStroke">
+            <option value = "fill" selected>fill</option>
+            <option value = "stroke">stroke</option>
+                    </select>
+                        </div>
+
+
+                        <div id="ffrow">
+                            <label for="font-family">Font Family:</label>
+                            <select id="font-family" name="fontFamily">
+            <option value = "Arial" selected>Arial</option>
+            <option value = "Times New Roman">Times New Roman</option>
+                    </select>
+                        </div>
+
+                        <div id="stylerow">
+                            <label for="style">Style:</label>
+                            <select id="style" name="style">
+            <option value = "normal" selected>Normal</option>
+            <option value = "bold">Bold</option>
+            <option value = "italic">Italic</option>
+            <option value = "both">Both</option>
+                </select>
+                        </div>
+
+                    </form>
+
+                </div>
             </div>
+
+
+
 
             <div id="selectors">
 
+
+
                 <div id="stroke">
-                    <button><input type='text' id="strokestyle" />Stroke Style</button>
+                    <label for="stroke">Stoke Style:</label>
+                    <input type='text' id="strokestyle" />
                 </div>
 
                 <div id="fill">
-                    <button><input type='text' id="fillstyle" />Fill Style</button>
+                    <label for="fill">Fill Style:</label>
+                    <input type='text' id="fillstyle" />
                 </div>
 
                 <div id="backg">
-                    <button><input type='text' id="background" />Background</button>
+                    <label for="background">Background:</label>
+                    <input type='text' id="background" />
                 </div>
 
 
 
-                <div>
+                <div id="linew">
                     <input id="linewidth" type="range" orient="vertical" name="linewidth" min="1" max="100">
                 </div>
 
@@ -62,72 +121,38 @@
                     <option value="butt">butt</option>
                     <option value="round">round</option>
                     <option value="square">square</option>
-                </select>
+                    </select>
 
                     <select name="LineJoin" id="linejoin">
                     <option value="butt">miter</option>
                     <option value="round">round</option>
                     <option value="square">bevel</option>
-                </select>
+                    </select>
                     <!--<select name="linedash" id="linedash">
             <option value="[0]">No Dash</option>
             <option value="[5]">Dash</option>
         </select>-->
-                    <span class="btn btn-danger fa fa-font" id="text-tool">Text Tool</span>
-                    <div id="text-panel">
-                        <form id="add-text">
-                            <label for="size">Size:</label>
-                            <select id="size" name="size">
-                    <option value = "9" selected>9px</option>
-                    <option value = "12">12px</option>
-                    <option value = "14">14px</option>
-                    <option value = "16">16px</option>
-                    <option value = "20">20px</option>
-                    <option value = "48">48px</option>
-                    <option value = "72">72px</option>
-                    <option value = "96">96px</option>
-                    <option value = "144">144px</option>
-                    <option value = "200">200px</option>
-                </select>
-                            <label for="fillOrStroke">Fill Or Stroke:</label>
-                            <select id="fillOrStroke" name="fillOrStroke">
-                    <option value = "fill" selected>fill</option>
-                    <option value = "stroke">stroke</option>
-                </select>
-                            <label for="font-family">Font Family:</label>
-                            <select id="font-family" name="fontFamily">
-                    <option value = "Arial" selected>Arial</option>
-                    <option value = "Times New Roman">Times New Roman</option>
-                </select>
-                            <label for="style">Style:</label>
-                            <select id="style" name="style">
-                    <option value = "normal" selected>Normal</option>
-                    <option value = "bold">Bold</option>
-                    <option value = "italic">Italic</option>
-                    <option value = "both">Both</option>
-                </select>
-                        </form>
-                    </div>
-
-
-
                 </div>
             </div>
+
+            <div id="row4">
+                <button class="fa fa-arrow-left" id="minus"></button>
+                <button class="fa fa-arrow-right" id="plus"></button>
+                <button class="fa fa-eraser" id="eraser"></button>
+            </div>
+
+
+
+
+
 
             <div id="row5">
                 <button class="fa fa-arrow-left" id="undo"></button>
                 <button class="fa fa-arrow-right" id="redo"></button>
-            </div>
-
-            <div id="row6">
-                <button class="fa fa-eraser" id="eraser"></button>
                 <button class="fa fa-undo" id="clear"></button>
             </div>
 
-            <div id="zoom">
-                <button class="fa fa-arrow-left" id="minus"></button>
-                <button class="fa fa-arrow-right" id="plus"></button>
-            </div>
+
 
         </div>
 
@@ -240,6 +265,7 @@
             canvasPic.onload = function () {
                 contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
                 contextReal.drawImage(canvasPic, 0, 0);
+
             }
         });
 
