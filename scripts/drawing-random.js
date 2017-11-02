@@ -33,7 +33,7 @@ class DrawingRandom extends PaintFunction {
       this.contextReal.arc(
         this.points[i].x, this.points[i].y, this.points[i].radius,
         false, Math.PI * 2, false);
-      this.contextReal.fill();
+
     }
   }
   onMouseMove() { }
@@ -44,5 +44,4 @@ class DrawingRandom extends PaintFunction {
   }
   onMouseLeave() { }
   onMouseEnter() { }
-
 }
