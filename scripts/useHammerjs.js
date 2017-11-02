@@ -1,4 +1,4 @@
-var CanvasReal = docuemnt.getElementById('CanvasReal');
+var CanvasReal = document.getElementById('CanvasReal');
 var CanvasDraft = document.getElementById('CanvasDraft');
 
 
