@@ -12,6 +12,7 @@ $("#fillstyle").spectrum({
     showPalette: true,
     hideAfterPaletteSelect: true,
     clickoutFiresChange: true,
+    allowEmpty:true,
     move: function (color) {
 
         currentFunction.fillColor = color.toHexString();

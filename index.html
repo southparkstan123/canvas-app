@@ -2,8 +2,9 @@
 
 <head>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
 
 </head>
 
@@ -13,33 +14,30 @@
 
 
         <div class="menu">
+            <div id="menu1">
+                <div id="row1">
+                    <button class="fa fa-paint-brush" id="drawing-line"></button>
+                    <button class="fa fa-pencil" id="drawing-straight-line"></button>
+                    <button class="fa fa-circle" id="drawing-curve">Curve L</button>
+                    <button class="fa fa-circle" id="drawing-ellipse"></button>
+                    <button class="fa fa-stop" id="drawing-rectangle"></button>
+                </div>
 
-
-            <div id="row1">
-                <button class="fa fa-paint-brush" id="drawing-line"></button>
-                <button class="fa fa-pencil" id="drawing-straight-line"></button>
-                <button class="btn btn-danger fa fa-circle" id="drawing-curve">Curve L</button>
-                <button class="fa fa-circle" id="drawing-ellipse"></button>
-            </div>
-
-            <div id="row2">
-                <button class="fa fa-stop" id="drawing-rectangle"></button>
-                <button class="fa fa-square-o" id="drawing-strokerectangle"></button>
-                <button class="fa fa-caret-right" id="drawing-polygon"></button>
-                <button class="btn btn-danger fa fa-paint-brush" id="eyedropper"></button>
+                <div id="row2">
+                    <button class="fa fa-square-o" id="drawing-strokerectangle"></button>
+                    <button class="fa fa-caret-right" id="drawing-polygon"></button>
+                    <button class="fa fa-eyedropper" id="eyedropper"></button>
+                    <button class="" id="drawing-random-dots">Random Dots</button>
+                    <button class="fa fa-font" id="text-tool"></button>
+                </div>
             </div>
 
             <!-- Font -->
             <div id="textbox">
-                <div id="row5">
-                    <button class="fa fa-font" id="text-tool"></button>
-                </div>
-
                 <div id="text-panel">
                     <form id="add-text">
-
                         <div id="sizerow">
-                            <label for="size">Size:</label>
+                            <label class="panel1" for="size">Size:</label>
                             <select id="size" name="size">
                                 <option value = "9" selected>9px</option>
                                 <option value = "12">12px</option>
@@ -54,21 +52,21 @@
                             </select>
                         </div>
                         <div id="fosrow">
-                            <label for="fillOrStroke">Fill Or Stroke:</label>
+                            <label class="panel2" for="fillOrStroke">Fill Or Stroke:</label>
                             <select id="fillOrStroke" name="fillOrStroke">
                                 <option value = "fill" selected>fill</option>
                                 <option value = "stroke">stroke</option>
                             </select>
                         </div>
                         <div id="ffrow">
-                            <label for="font-family">Font Family:</label>
+                            <label class="panel3" for="font-family">Font Family:</label>
                             <select id="font-family" name="fontFamily">
                                 <option value = "Arial" selected>Arial</option>
                                 <option value = "Times New Roman">Times New Roman</option>
                             </select>
                         </div>
                         <div id="stylerow">
-                            <label for="style">Style:</label>
+                            <label class="panel4" for="style">Style:</label>
                             <select id="style" name="style">
                                 <option value = "normal" selected>Normal</option>
                                 <option value = "bold">Bold</option>
@@ -80,28 +78,23 @@
                 </div>
             </div>
             <div id="selectors">
-
-
-
-                <div id="stroke">
-                    <label for="stroke">Stoke Style:</label>
+                <!--<div id="stroke">
+                    <label class="panel5" for="stroke">Stoke Style:</label>
                     <input type='text' id="strokestyle" />
                 </div>
 
                 <div id="fill">
-                    <label for="fill">Fill Style:</label>
+                    <label class="panel6" for="fill">Fill Style:</label>
                     <input type='text' id="fillstyle" />
                 </div>
 
                 <div id="backg">
-                    <label for="background">Background:</label>
+                    <label class="panel7" for="background">Background:</label>
                     <input type='text' id="background" />
-                </div>
-
-
+                </div>-->
 
                 <div id="linew">
-                    <input id="linewidth" type="range" orient="vertical" name="linewidth" min="1" max="100">
+                    <input id="linewidth" type="range" name="linewidth" min="1" max="100">
                 </div>
 
                 <div id="Line">
@@ -113,35 +106,68 @@
                     </select>
 
                     <select name="LineJoin" id="linejoin">
-                    <option value="butt">miter</option>
+                    <option value="miter">miter</option>
                     <option value="round">round</option>
-                    <option value="square">bevel</option>
+                    <option value="bevel">bevel</option>
                     </select>
-                    <!--<select name="linedash" id="linedash">
-            <option value="[0]">No Dash</option>
-            <option value="[5]">Dash</option>
-        </select>-->
                 </div>
             </div>
-            <div id="row4">
-                <button class="fa fa-arrow-left" id="minus"></button>
-                <button class="fa fa-arrow-right" id="plus"></button>
-                <button class="fa fa-eraser" id="eraser"></button>
-            </div>
-            <div id="row5">
-                <button class="fa fa-arrow-left" id="undo"></button>
-                <button class="fa fa-arrow-right" id="redo"></button>
-                <button class="fa fa-undo" id="clear"></button>
-            </div>
-            <div id="row6">
-                <button class="fa fa-upload" id="upload"></button>
+
+            <div id="rowbottom">
+                <div id="row4">
+                    <!--<button class="btn fa fa-paint" id="upload">Firebase</button>-->
+                    <button class="btn fa fa-eraser" id="eraser">eraser</button>
+                    <button class="btn fa fa-undo" id="clear">clear</button>
+
+                </div>
+
+                <div id="row5">
+                    <button class="btn fa fa-arrow-left" id="undo">undo</button>
+                    <button class="btn fa fa-arrow-right" id="redo">redo</button>
+                </div>
             </div>
         </div>
+
         <div id="canvas-container">
             <canvas id="canvas-real" class="canvas" width='800px' height='500px'></canvas>
             <canvas id="canvas-draft" class="canvas" width='800px' height='500px'></canvas>
         </div>
+
     </div>
+
+
+
+
+
+    <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <script src='scripts/spectrum.js'></script>
+
+    <link rel='stylesheet' href='css/spectrum.css' />
+    <link href="css/style.css" rel="stylesheet" type='text/css'>
+    <script type='text/javascript' src="scripts/hammer.js"></script>
+    <script type='text/javascript' src="scripts/canvas-common.js"></script>
+    <script type='text/javascript' src="scripts/drawing-line.js"></script>
+    <script type='text/javascript' src="scripts/drawing-ellipse.js"></script>
+    <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
+    <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
+    <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
+    <script type='text/javascript' src="scripts/drawing-curve.js"></script>
+    <script type='text/javascript' src="scripts/drawing-polygon.js"></script>
+    <script type='text/javascript' src="scripts/drawing-random-dots.js"></script>
+    <script type='text/javascript' src="scripts/drawing-random-line.js"></script>
+
+    <script type='text/javascript' src="scripts/eraser.js"></script>
+
+    <script type='text/javascript' src="scripts/setstrokestyle.js"></script>
+    <script type='text/javascript' src="scripts/setfillstyle.js"></script>
+    <script type='text/javascript' src="scripts/setbackground.js"></script>
+
+    <script type='text/javascript' src="scripts/eyedropper.js"></script>
+    <script type='text/javascript' src="scripts/setlinewidth.js"></script>
+    <script type='text/javascript' src="scripts/setlinetype.js"></script>
+    <script type='text/javascript' src="scripts/setlinejoin.js"></script>
+
 
     <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
     <script>
@@ -157,109 +183,67 @@
         firebase.initializeApp(config);
     </script>
 
-    <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script> -->
-        <script src='scripts/spectrum.js'></script>
 
-        <link rel='stylesheet' href='css/spectrum.css' />
-        <link href="css/style.css" rel="stylesheet" type='text/css'>
+    <script type='text/javascript'>
+        $('#drawing-rectangle').click(() => {
+            currentFunction = new DrawingRectangle(contextReal, contextDraft);
+        });
+        $('#drawing-line').click(() => {
+            currentFunction = new DrawingLine(contextReal, contextDraft);
+        });
+        $('#drawing-ellipse').click(() => {
+            currentFunction = new DrawingEllipse(contextReal, contextDraft);
+        });
+        $('#drawing-strokerectangle').click(() => {
+            currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
+        });
+        $('#drawing-straight-line').click(() => {
+            currentFunction = new DrawingStraightLine(contextReal, contextDraft);
+        });
+        $('#drawing-curve').click(() => {
+            currentFunction = new DrawingCurve(contextReal, contextDraft);
+        });
+        $('#drawing-polygon').click(() => {
+            currentFunction = new DrawingPolygon(contextReal, contextDraft);
+        });
 
-        <script type='text/javascript' src="scripts/canvas-common.js"></script>
-        <script type='text/javascript' src="scripts/drawing-line.js"></script>
-        <script type='text/javascript' src="scripts/drawing-ellipse.js"></script>
-        <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
-        <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
-        <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
-        <script type='text/javascript' src="scripts/drawing-curve.js"></script>
-        <script type='text/javascript' src="scripts/drawing-polygon.js"></script>
-        <script type='text/javascript' src="scripts/drawing-random.js"></script>
+        $('#drawing-random-dots').click(() => {
+            currentFunction = new DrawingRandomDots(contextReal, contextDraft);
+        });
+
+        $('#drawing-random-line').click(() => {
+            currentFunction = new DrawingRandomColorLine(contextReal, contextDraft);
+        });
+
+        $('#eraser').click(function () {
+            currentFunction = new Eraser(contextReal, contextDraft);
+        });
+
+        $('#clear').click(() => {
+            contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+            contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+        });
+
+        let undoClicked = false; //first click of Undo
 
 
-        <script type='text/javascript' src="scripts/eraser.js"></script>
+        $('#undo').click(() => {
+            var canvasPic = new Image();
+            if (undoClicked === false) { //if firstclick needs extra pop
+                undoList.pop();
+                undoClicked = true; // if not firstclick only needs to pop once so returns true
+            }
+            if (undoList.length == 0) {  // to clear the canvas when there is no more image stored
+                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                return;
+            }
+            canvasPic.src = undoList.pop();
 
-        <script type='text/javascript' src="scripts/setstrokestyle.js"></script>
-        <script type='text/javascript' src="scripts/setfillstyle.js"></script>
-        <script type='text/javascript' src="scripts/setbackground.js"></script>
-        <script type='text/javascript' src="scripts/eyedropper.js"></script>
-        <script type='text/javascript' src="scripts/setlinewidth.js"></script>
-        <script type='text/javascript' src="scripts/setlinetype.js"></script>
-        <script type='text/javascript' src="scripts/setlinejoin.js"></script>
-        <script type='text/javascript' src="scripts/firebase-service.js"></script>
-    <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
-
-        <script type='text/javascript' src="scripts/eyedropper.js"></script>
-        <script type='text/javascript' src="scripts/setlinewidth.js"></script>
-        <script type='text/javascript' src="scripts/setlinetype.js"></script>
-        <script type='text/javascript' src="scripts/setlinejoin.js"></script>
-        <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
-        <script type='text/javascript' src="scripts/add-text.1.js"></script>
-
-        <script type='text/javascript' src="scripts/useHammerjs.js"></script>
-
-
-
-
-        <script type='text/javascript'>
-            $('#drawing-rectangle').click(() => {
-                currentFunction = new DrawingRectangle(contextReal, contextDraft);
-            });
-            $('#drawing-line').click(() => {
-                currentFunction = new DrawingLine(contextReal, contextDraft);
-            });
-            $('#drawing-ellipse').click(() => {
-                currentFunction = new DrawingEllipse(contextReal, contextDraft);
-            });
-            $('#drawing-strokerectangle').click(() => {
-                currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
-            });
-            $('#drawing-straight-line').click(() => {
-                currentFunction = new DrawingStraightLine(contextReal, contextDraft);
-            });
-            $('#drawing-curve').click(() => {
-                currentFunction = new DrawingCurve(contextReal, contextDraft);
-            });
-            $('#drawing-polygon').click(() => {
-                currentFunction = new DrawingPolygon(contextReal, contextDraft);
-            });
-            $('#eraser').click(function () {
-                currentFunction = new Eraser(contextReal, contextDraft);
-            });
-
-            $('#clear').click(() => {
-                contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+            canvasPic.onload = function () {
                 contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
                 contextReal.drawImage(canvasPic, 0, 0);
-            });
-
-        /* Zoom function
-        let translatePos = {
-            x: canvasReal.width / 2,
-            y: canvasReal.height / 2
-        };
-        let scale = 1.0;
-        let scaleMultiplier = 0.8;
-        let startDragOffset = {};
-        let mouseDown = false;
-
-        $('#minus').click(function () {
-            scale *= scaleMultiplier;
-
-            contextReal.save();
-            contextReal.translate(translatePos.x, translatePos.y);
-            contextReal.scale(scale, scale);
-            contextReal.restore();
-        }, false);
-
-        $('#plus').click(function () {
-            scale /= scaleMultiplier;
-
-            contextReal.save();
-            contextReal.translate(translatePos.x, translatePos.y);
-            contextReal.scale(scale, scale);
-            contextReal.restore();
-        }, false);
-        */
+            }
+        });
 
         $("#text-tool").click(function () {
             currentFunction = new AddText(contextReal, contextDraft);
@@ -287,10 +271,33 @@
 
         });
 
+        $(document).ready(function () {
+            canvasDraft.width = $('#canvas-container').width();
+            canvasDraft.height = $('#canvas-container').height();
 
-        $("#eyedropper").click(function () {
-            currentFunction = new EyeDropper(contextReal);
-        });
+            canvasReal.width = $('#canvas-container').width();
+            canvasReal.height = $('#canvas-container').height();
+
+        })
+
+
+        $(window).resize(function () {
+
+            menuwidth = $('.menu').width() + 62;
+            canvasheight = $(window).height() - $('#canvas-container').height();
+
+            var canvasRealx = $(window).width() - menuwidth;
+            var canvasRealy = $(window).height() - canvasheight;
+
+
+            canvasDraft.width = $('#canvas-container').width();
+            canvasDraft.height = $('#canvas-container').height();
+
+            canvasReal.width = $('#canvas-container').width();
+            canvasReal.height = $('#canvas-container').height();
+
+            let newwidth = $('#canvas-container').width();
+            let newheight = $('#canvas-container').height();
 
         $('#upload').click(()=>{
             let canvasPic = new Image();

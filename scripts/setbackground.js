@@ -12,6 +12,7 @@ $("#background").spectrum({
     showPalette: true,
     hideAfterPaletteSelect: true,
     clickoutFiresChange: true,
+    allowEmpty:true,
     move: function (color) {
 
         $('#canvas-real').css('background-color', color.toHexString())
