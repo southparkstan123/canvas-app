@@ -48,16 +48,12 @@ font: normal normal normal 14px;
     border: 3px solid green;
 }
 
-/* Clearfix */
-
-
-
-
 /* Menu  */
 
 .menu {
     padding: 10px 10px;
     width: 20%;
+    height: 97%;
     float: left;
     border: 2px solid red;
 }
@@ -80,8 +76,8 @@ font: normal normal normal 14px;
 #row7 button,
 #text-tool {
     font-size: 3vw;
-    width: 40px;
-    height: 40px;
+    width: 22%;
+    height: 60px;
     background-color: grey;  
 }
 
@@ -91,6 +87,7 @@ font: normal normal normal 14px;
     width: 40px;
     height: 40px;
 }
+
 
 
 #row1,
@@ -105,7 +102,8 @@ font: normal normal normal 14px;
 #fill,
 #backg,
 #line,
-#linew {
+#linew,
+#random {
     display: flex;
     justify-content: center;
 }
@@ -219,6 +217,7 @@ font: normal normal normal 14px;
 #textbox {
     background-color: lightgrey;
     margin-top: 10px;
+    height: 20%;
 }
 
 

@@ -15,7 +15,7 @@
 
         <div class="menu">
 
-
+        <div id="menu1">
             <div id="row1">
                 <button class="fa fa-paint-brush" id="drawing-line"></button>
                 <button class="fa fa-pencil" id="drawing-straight-line"></button>
@@ -29,6 +29,11 @@
                 <button class="fa fa-caret-right" id="drawing-polygon"></button>
                 <button class="btn btn-danger fa fa-paint-brush" id="eyedropper"></button>
             </div>
+
+            <div id="random">
+            <button id="drawing-random">Random</button>
+            </div>
+        </div>
 
             <!-- Font -->
             <div id="textbox">
@@ -156,7 +161,7 @@
 
         </div>
 
-                <button id="drawing-random">Random</button>
+                
 
 
         <div id="canvas-container">
@@ -200,7 +205,7 @@
     <script type='text/javascript' src="scripts/setlinetype.js"></script>
     <script type='text/javascript' src="scripts/setlinejoin.js"></script>
     <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
-    <script type='text/javascript' src="scripts/add-text.1.js"></script>
+    <!-- <script type='text/javascript' src="scripts/add-text.1.js"></script> -->
 
 
 
@@ -244,7 +249,7 @@
         });
 
         let undoClicked = false; //first click of Undo
-        $('#undo').click(() => {
+        $('#undo').click(() => { console.log("here");
             var canvasPic = new Image();
             if (undoClicked === false) { //if firstclick needs extra pop
                 undoList.pop();
@@ -263,33 +268,7 @@
             }
         });
 
-        // Zoom function
-        let translatePos = {
-            x: canvasReal.width / 2,
-            y: canvasReal.height / 2
-        };
-        let scale = 1.0;
-        let scaleMultiplier = 0.8;
-        let startDragOffset = {};
-        let mouseDown = false;
-
-        $('#minus').click(function () {
-            scale *= scaleMultiplier;
-
-            contextReal.save();
-            contextReal.translate(translatePos.x, translatePos.y);
-            contextReal.scale(scale, scale);
-            contextReal.restore();
-        }, false);
-
-        $('#plus').click(function () {
-            scale /= scaleMultiplier;
-
-            contextReal.save();
-            contextReal.translate(translatePos.x, translatePos.y);
-            contextReal.scale(scale, scale);
-            contextReal.restore();
-        }, false);
+        
 
         $("#text-tool").click(function () {
             currentFunction = new AddText(contextReal, contextDraft);
@@ -317,7 +296,23 @@
 
         });
 
+         // for responsive
+         $(window).resize(function(){
+             if($(window).width()>300){
+         var tempCanvas = document.createElement('canvas');
+         var tempContext = tempCanvas.getContext('2d');/         tempCanvas.width = canvasReal.width;
+         tempCanvas.height = canvasReal.height;
+        tempContext.drawImage(canvasReal,0,0);
+         canvasReal.width = parseInt($("#canvas-container").css("width").replace("px",""));        canvasReal.height = parseInt($("#canvas-container").css("height").replace("px",""));
+         canvasDraft.width = parseInt($("#canvas-container").css("width").replace("px",""));
+         canvasDraft.height = parseInt($("#canvas-container").css("height").replace("px",""));
+        
+         contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
+         contextReal.drawImage(tempCanvas,0,0);
+     }
+ });
 
+      
         $("#eyedropper").click(function () {
             currentFunction = new EyeDropper(contextReal);
         });

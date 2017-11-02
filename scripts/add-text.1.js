@@ -152,10 +152,7 @@ class AddText extends PaintFunction{
     }
 
     onDblClick(event){
-<<<<<<< HEAD
         this.isEditing = false;
-=======
->>>>>>> 748613b73d8258f1c7475f1ba0fdb9125dda6f95
         this.addText(this.contextReal, this.text, this.origX, this.origY, this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);
         $('#inputBox').remove();
 
