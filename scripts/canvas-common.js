@@ -99,6 +99,12 @@ $(document).ready(function(){
     }
 });
 
+$('#canvas-draft').dblclick(function (e) {
+    let mouseX = e.pageX - this.offsetLeft;
+    let mouseY = e.pageY - this.offsetTop;
+    currentFunction.onDblClick([mouseX, mouseY], e);
+});
+
 
 class PaintFunction {
     constructor() {
@@ -116,4 +122,5 @@ class PaintFunction {
     onMouseUp() { }
     onMouseLeave() { }
     onMouseEnter() { }
+    onDblClick() { }
 }
