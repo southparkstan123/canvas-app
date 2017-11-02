@@ -25,6 +25,9 @@ class UploadImage extends PaintFunction{
             canvasRef.put(blob).then(function(snapshot) {
                 console.log(filename + 'is uploaded!');
 
+                let myRef = storageRef.child('canvas');
+                console.log(storageRef.parent);
+
                 //Append the canvas to body
                 canvasRef.getDownloadURL().then((link) => {
                     let newImg = document.createElement('img');

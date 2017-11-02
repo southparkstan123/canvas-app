@@ -91,7 +91,7 @@
     <script type='text/javascript' src="scripts/setlinewidth.js"></script>
     <script type='text/javascript' src="scripts/setlinetype.js"></script>
     <script type='text/javascript' src="scripts/setlinejoin.js"></script>
-    <script type='text/javascript' src="scripts/upload-image.js"></script>
+    <script type='text/javascript' src="scripts/firebase-service.js"></script>
     <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
 
 
@@ -155,8 +155,8 @@
         $('#upload').click(()=>{
             let canvasPic = new Image();
 
-            currentFunction = new UploadImage(canvasReal);
-            currentFunction.uploadImage();
+            currentFunction = new FirebaseService(canvasReal);
+            currentFunction.uploadCanvas();
 
             if(undoList.length == 0){
                 return;
