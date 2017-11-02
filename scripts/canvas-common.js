@@ -12,29 +12,29 @@ var sShot = -1;
 
 function desktopMode() {
     $('#canvas-draft').mousedown(function (e) {
-        let mouseX = e.pageX - this.offsetLeft;
+        let mouseX = e.pageX - this.offsetLeft -  $('.menu').width();
         let mouseY = e.pageY - this.offsetTop;
         currentFunction.onMouseDown([mouseX, mouseY], e);
         dragging = true;
     });
     $('#canvas-draft').dblclick(function (e) {
         dragging = false;
-        let mouseX = e.pageX - this.offsetLeft;
+        let mouseX = e.pageX - this.offsetLeft -  $('.menu').width();
         let mouseY = e.pageY - this.offsetTop;
         currentFunction.onDblClick([mouseX, mouseY], e);
     });
     $('#canvas-draft').mousemove(function (e) {
         if (dragging) {
-            let mouseX = e.pageX - this.offsetLeft;
+            let mouseX = e.pageX - this.offsetLeft -  $('.menu').width();
             let mouseY = e.pageY - this.offsetTop;
             currentFunction.onDragging([mouseX, mouseY], e);
         }
-        let mouseX = e.pageX - this.offsetLeft;
+        let mouseX = e.pageX - this.offsetLeft -  $('.menu').width();
         let mouseY = e.pageY - this.offsetTop;
         currentFunction.onMouseMove([mouseX, mouseY], e, this);
     });
     $('#canvas-draft').mouseup(function (e) {
-        let mouseX = e.pageX - $('#canvas-draft').get()[0].offsetLeft;
+        let mouseX = e.pageX - $('#canvas-draft').get()[0].offsetLeft -  $('.menu').width();
         let mouseY = e.pageY - $('#canvas-draft').get()[0].offsetTop;
         currentFunction.onMouseUp([mouseX, mouseY], e, dragging);
 
@@ -45,13 +45,13 @@ function desktopMode() {
         dragging = false;
     });
     $('#canvas-draft').mouseleave(function (e) {
-        let mouseX = e.pageX - this.offsetLeft;
+        let mouseX = e.pageX - this.offsetLeft -  $('.menu').width();
         let mouseY = e.pageY - this.offsetTop;
         currentFunction.onMouseLeave([mouseX, mouseY], e);
     });
 
     $('#canvas-draft').mouseenter(function (e) {
-        let mouseX = e.pageX - this.offsetLeft;
+        let mouseX = e.pageX - this.offsetLeft -  $('.menu').width();
         let mouseY = e.pageY - this.offsetTop;
         currentFunction.onMouseEnter([mouseX, mouseY], e);
     });

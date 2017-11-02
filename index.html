@@ -161,12 +161,8 @@
 
         </div>
 
-<<<<<<< HEAD
-                
-=======
         <button id="drawing-random-dots">Random Dots</button>
         <button id="drawing-random-line">Random Line</button>
->>>>>>> 5a74244a6455acc273918cf95415d148d721c4b4
 
 
         <div id="canvas-container">
@@ -211,11 +207,7 @@
     <script type='text/javascript' src="scripts/setlinetype.js"></script>
     <script type='text/javascript' src="scripts/setlinejoin.js"></script>
     <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
-<<<<<<< HEAD
-    <!-- <script type='text/javascript' src="scripts/add-text.1.js"></script> -->
-=======
-    <!--<script type='text/javascript' src="scripts/add-text.1.js"></script>-->
->>>>>>> 5a74244a6455acc273918cf95415d148d721c4b4
+
 
 
 
@@ -265,7 +257,7 @@
         let undoClicked = false; //first click of Undo
 
 
-        $('#undo').click(() => {console.log("here")
+        $('#undo').click(() => { 
             var canvasPic = new Image();
             if (undoClicked === false) { //if firstclick needs extra pop
                 undoList.pop();
@@ -312,11 +304,128 @@
 
         });
 
-         // for responsive
+        
+        // responsive to div canvas-container
+          /*
+        $(document).ready(function(){
+            canvasReal.width = $('#canvas-container').width();
+            canvasReal.height = $('#canvas-container').height();
+            canvasDraft.width = $('#canvas-container').width();
+            canvasDraft.height = $('#canvas-container').height();
+        });
+          */
+
+       
+
+        $(window).resize(function(){ 
+            console.log($(window).width());
+
+            
+            menuwidth = $('.menu').width() + 62;
+            canvasheight =  $(window).height() - $('#canvas-container').height();
+
+            
+
+            var canvasRealx = $(window).width() - menuwidth;
+            var canvasRealy = $(window).height() - canvasheight;
+
+            
+            canvasDraft.width = $('#canvas-container').width();
+            canvasDraft.height = $('#canvas-container').height();
+
+            canvasReal.width = $('#canvas-container').width();
+            canvasReal.height = $('#canvas-container').height();
+
+            let newwidth = $('#canvas-container').width();
+            let newheight = $('#canvas-container').height();
+
+            let scalex = newwidth / initialwidth;
+            let scaley = newheight / initialheight;
+
+            
+
+            var canvasPic = new Image();
+            if (undoList.length == 0) {  // to clear the canvas when there is no more image stored
+                return;
+            }
+        
+            var drawImage = undoList[undoList.length - 1];
+        
+            canvasPic.src = drawImage;
+
+            canvasPic.onload = function () {
+
+            contextReal.drawImage(canvasPic, 0, 0);
+
+            contextDraft.save();
+            contextDraft.translate(initialwidth, initialheight);
+         contextDraft.scale(scalex, scaley);
+            contextDraft.restore();
+
+            contextReal.save();
+             contextReal.translate(initialwidth, initialheight);
+            contextReal.scale(scalex, scaley);
+             contextReal.restore();
+
+            }
+
+        }) 
+    
+        // Zoom function
+        
+        let initialwidth = $('#canvas-container').width();
+        let initialheight = $('#canvas-container').height();
+
+
+        /*
+        let scaleMultiplier = 0.8;
+        let startDragOffset = {};
+        let mouseDown = false;
+        */
+
+        $('#plus').click(function () {
+            //scale *= scaleMultiplier;
+            let newwidth = $('#canvas-container').width();
+            let newheight = $('#canvas-container').height();
+
+            let scalex = newwidth / initialwidth;
+            let scaley = newheight / initialheight;
+
+            contextReal.save();
+            contextReal.translate(initialwidth, initialheight);
+            contextReal.scale(scalex, scaley);
+            contextReal.restore();
+
+
+
+            console.log("scalex0="+scalex);
+        });
+
+        $('#minus').click(function () {
+            //scale /= scaleMultiplier;
+
+            let newwidth = $('#canvas-container').width();
+        let newheight = $('#canvas-container').height();
+
+        let scalex = newwidth / initialwidth;
+            let scaley = newheight / initialheight;
+
+            contextReal.save();
+            contextReal.translate(initialwidth, initialheight);
+            contextReal.scale(scalex, scaley);
+            contextReal.restore();
+        
+        });
+
+
+
+
+         /* for responsive
          $(window).resize(function(){
              if($(window).width()>300){
          var tempCanvas = document.createElement('canvas');
-         var tempContext = tempCanvas.getContext('2d');/         tempCanvas.width = canvasReal.width;
+         var tempContext = tempCanvas.getContext('2d');      
+         tempCanvas.width = canvasReal.width;
          tempCanvas.height = canvasReal.height;
         tempContext.drawImage(canvasReal,0,0);
          canvasReal.width = parseInt($("#canvas-container").css("width").replace("px",""));        canvasReal.height = parseInt($("#canvas-container").css("height").replace("px",""));
@@ -327,6 +436,7 @@
          contextReal.drawImage(tempCanvas,0,0);
      }
  });
+ */
 
       
         $("#eyedropper").click(function () {
