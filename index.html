@@ -12,11 +12,10 @@
 </head>
 
 <body>
-        <div id="canvas-container">
-                <canvas id="canvas-real" class="canvas" width='1366px' height='768px'></canvas>
-                <canvas id="canvas-draft" class="canvas" width='1366px' height='768px'></canvas>
-        </div>
-   
+    <div id="canvas-container">
+        <canvas id="canvas-real" class="canvas" width='1366px' height='768px'></canvas>
+        <canvas id="canvas-draft" class="canvas" width='1366px' height='768px'></canvas>
+    </div>
     <div class="buttons">
         <span class="btn btn-primary fa fa-square" id="drawing-rectangle">Drawing Rectangle</span>
         <span class="btn btn-info fa fa-paint-brush" id="drawing-line">Drawing Line</span>
@@ -49,9 +48,42 @@
             <option value="[0]">No Dash</option>
             <option value="[5]">Dash</option>
         </select>-->
+        <span class="btn btn-danger fa fa-font" id="text-tool">Text Tool</span>
+        <div id="text-panel">
+            <form id="add-text">
+                <label for="size">Size:</label>
+                <select id = "size" name="size">
+                    <option value = "9" selected>9px</option>
+                    <option value = "12">12px</option>
+                    <option value = "14">14px</option>
+                    <option value = "16">16px</option>
+                    <option value = "20">20px</option>
+                    <option value = "48">48px</option>
+                    <option value = "72">72px</option>
+                    <option value = "96">96px</option>
+                    <option value = "144">144px</option>
+                    <option value = "200">200px</option>
+                </select>
+                <label for="fillOrStroke">Fill Or Stroke:</label>
+                <select id = "fillOrStroke" name="fillOrStroke">
+                    <option value = "fill" selected>fill</option>
+                    <option value = "stroke">stroke</option>
+                </select>
+                <label for="font-family">Font Family:</label>
+                <select id ="font-family" name="fontFamily">
+                    <option value = "Arial" selected>Arial</option>
+                    <option value = "Times New Roman">Times New Roman</option>
+                </select>
+                <label for="style">Style:</label>
+                <select id ="style" name="style">
+                    <option value = "normal" selected>Normal</option>
+                    <option value = "bold">Bold</option>
+                    <option value = "italic">Italic</option>
+                    <option value = "both">Both</option>
+                </select>
+            </form>
+        </div>
     </div>
-
-    
 
     <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -80,7 +112,7 @@
     <script type='text/javascript' src="scripts/setlinetype.js"></script>
     <script type='text/javascript' src="scripts/setlinejoin.js"></script>
     <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
-
+    <script type='text/javascript' src="scripts/add-text.1.js"></script>
 
 
     <link href="css/style.css" rel="stylesheet" type='text/css'>
@@ -138,6 +170,34 @@
         $("#eyedropper").click(function () {
             currentFunction = new EyeDropper(contextReal);
         });
+
+        $("#text-tool").click(function(){
+            currentFunction = new AddText(contextReal, contextDraft);
+            currentFunction.reset();
+            //Listen the input fields change
+            $('select[name="fontFamily"]').change(function(e){
+                currentFunction.onChangeFontFamily(e.target.value);
+            })
+
+            $('select[name="fillOrStroke"]').change(function(e){
+                currentFunction.onChangeFillOrStroke(e.target.value);
+            })
+
+            $('select[name="style"]').change(function(e){
+                currentFunction.onChangeStyle(e.target.value);
+            })
+
+            $('select[name="size"]').change(function(e){
+                currentFunction.onChangeSize(e.target.value);
+            })
+
+            $('select[name="lineWidth"]').change(function(e){
+                currentFunction.onChangeLineWidth(e.target.value);
+            })
+
+        });
+
+
 
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
