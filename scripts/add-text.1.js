@@ -44,7 +44,7 @@ class AddText extends PaintFunction{
 
             this.reset();
 
-            $('div.buttons').append(this.input);
+            $('#canvas-container').append(this.input);
 
             this.input.css({
                 "left": coord[0],

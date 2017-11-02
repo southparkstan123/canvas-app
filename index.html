@@ -41,54 +41,44 @@
                         <div id="sizerow">
                             <label for="size">Size:</label>
                             <select id="size" name="size">
-                        <option value = "9" selected>9px</option>
-                        <option value = "12">12px</option>
-                        <option value = "14">14px</option>
-                        <option value = "16">16px</option>
-                        <option value = "20">20px</option>
-                        <option value = "48">48px</option>
-                        <option value = "72">72px</option>
-                        <option value = "96">96px</option>
-                        <option value = "144">144px</option>
-                        <option value = "200">200px</option>
-                    </select>
+                                <option value = "9" selected>9px</option>
+                                <option value = "12">12px</option>
+                                <option value = "14">14px</option>
+                                <option value = "16">16px</option>
+                                <option value = "20">20px</option>
+                                <option value = "48">48px</option>
+                                <option value = "72">72px</option>
+                                <option value = "96">96px</option>
+                                <option value = "144">144px</option>
+                                <option value = "200">200px</option>
+                            </select>
                         </div>
-
                         <div id="fosrow">
                             <label for="fillOrStroke">Fill Or Stroke:</label>
                             <select id="fillOrStroke" name="fillOrStroke">
-            <option value = "fill" selected>fill</option>
-            <option value = "stroke">stroke</option>
-                    </select>
+                                <option value = "fill" selected>fill</option>
+                                <option value = "stroke">stroke</option>
+                            </select>
                         </div>
-
-
                         <div id="ffrow">
                             <label for="font-family">Font Family:</label>
                             <select id="font-family" name="fontFamily">
-            <option value = "Arial" selected>Arial</option>
-            <option value = "Times New Roman">Times New Roman</option>
-                    </select>
+                                <option value = "Arial" selected>Arial</option>
+                                <option value = "Times New Roman">Times New Roman</option>
+                            </select>
                         </div>
-
                         <div id="stylerow">
                             <label for="style">Style:</label>
                             <select id="style" name="style">
-            <option value = "normal" selected>Normal</option>
-            <option value = "bold">Bold</option>
-            <option value = "italic">Italic</option>
-            <option value = "both">Both</option>
-                </select>
+                                <option value = "normal" selected>Normal</option>
+                                <option value = "bold">Bold</option>
+                                <option value = "italic">Italic</option>
+                                <option value = "both">Both</option>
+                            </select>
                         </div>
-
                     </form>
-
                 </div>
             </div>
-
-
-
-
             <div id="selectors">
 
 
@@ -133,40 +123,39 @@
         </select>-->
                 </div>
             </div>
-
             <div id="row4">
                 <button class="fa fa-arrow-left" id="minus"></button>
                 <button class="fa fa-arrow-right" id="plus"></button>
                 <button class="fa fa-eraser" id="eraser"></button>
             </div>
-
-
-
-
-
-
             <div id="row5">
                 <button class="fa fa-arrow-left" id="undo"></button>
                 <button class="fa fa-arrow-right" id="redo"></button>
                 <button class="fa fa-undo" id="clear"></button>
             </div>
-
-
-
+            <div id="row6">
+                <button class="fa fa-upload" id="upload"></button>
+            </div>
         </div>
-
-
-
         <div id="canvas-container">
             <canvas id="canvas-real" class="canvas" width='800px' height='500px'></canvas>
             <canvas id="canvas-draft" class="canvas" width='800px' height='500px'></canvas>
         </div>
-
     </div>
 
-
-
-
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCxmdO_MIqagK4DCca_H_WpjCWPuUG_Jfc",
+            authDomain: "canvas-app-cc19a.firebaseapp.com",
+            databaseURL: "https://canvas-app-cc19a.firebaseio.com",
+            projectId: "canvas-app-cc19a",
+            storageBucket: "canvas-app-cc19a.appspot.com",
+            messagingSenderId: "1068627921931"
+        };
+        firebase.initializeApp(config);
+    </script>
 
     <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -192,6 +181,12 @@
         <script type='text/javascript' src="scripts/setstrokestyle.js"></script>
         <script type='text/javascript' src="scripts/setfillstyle.js"></script>
         <script type='text/javascript' src="scripts/setbackground.js"></script>
+        <script type='text/javascript' src="scripts/eyedropper.js"></script>
+        <script type='text/javascript' src="scripts/setlinewidth.js"></script>
+        <script type='text/javascript' src="scripts/setlinetype.js"></script>
+        <script type='text/javascript' src="scripts/setlinejoin.js"></script>
+        <script type='text/javascript' src="scripts/firebase-service.js"></script>
+    <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
 
         <script type='text/javascript' src="scripts/eyedropper.js"></script>
         <script type='text/javascript' src="scripts/setlinewidth.js"></script>
@@ -297,16 +292,22 @@
             currentFunction = new EyeDropper(contextReal);
         });
 
-        /* make canvas responsive to screen size
+        $('#upload').click(()=>{
+            let canvasPic = new Image();
 
-        $(window).load(function (){
-            container = $('#canvas-container');
+            currentFunction = new FirebaseService(canvasReal);
+            currentFunction.uploadCanvas();
 
+            if(undoList.length == 0){
+                return;
+            }
+            canvasPic.src = undoList.pop();
             
-        }
-
-        */
-
+            canvasPic.onload = function () {
+                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                contextReal.drawImage(canvasPic, 0, 0); 
+            }
+        });
 
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>
