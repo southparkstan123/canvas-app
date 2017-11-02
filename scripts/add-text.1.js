@@ -14,10 +14,11 @@ class AddText extends PaintFunction{
         this.fontStyle = 'normal';
         this.text = '';
         this.input = $('<input/>',{type:"text",name:"input",value:"",id:"inputBox"});
+        this.isEditing = true;
 
         $('select[name="fontFamily"]').val(this.fontFamily);
-        $('select[name="fontWeight"]').val(this.fontWeight);
-        $('select[name="fontStyle"]').val(this.fontStyle);
+        $('select[name="style"]').val(this.fontStyle);
+        $('select[name="size"]').val(this.fontSize);
         $('select[name="fillOrStroke"]').val("fill");
 
     }
@@ -31,7 +32,15 @@ class AddText extends PaintFunction{
         //Reset
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
 
-        if(this.input["0"].value == ""){
+
+        //If the canvas has input box, isEditing become true
+        if($('#inputBox').length != 0){
+            this.isEditing = true;
+        }else{
+            this.isEditing = false;
+        }
+
+        if(this.input["0"].value == "" && !this.isEditing){
 
             this.reset();
 
@@ -46,7 +55,7 @@ class AddText extends PaintFunction{
             });
         }else{
             this.text = this.input["0"].value;
-            this.fontSize = this.input["0"].style.fontSize;
+            //this.fontSize = this.input["0"].style.fontSize;
 
             $('#inputBox').remove();
             this.addText(this.contextDraft, this.text, coord[0], coord[1], this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);
@@ -55,7 +64,7 @@ class AddText extends PaintFunction{
     }
 
     addText(context, text, xpos, ypos, isStroke, fontSize, fontStyle, fontWeight, fontFamily){
-        context.font = `${fontStyle} ${fontWeight} ${fontSize} ${fontFamily}`;
+        context.font = `${fontStyle} ${fontWeight} ${fontSize}px ${fontFamily}`;
         context.strokeStyle = this.strokeColor;
         context.fillStyle = this.fillColor;
 
@@ -66,7 +75,7 @@ class AddText extends PaintFunction{
         }
     }
 
-    onChangeSize(coord,value){
+    onChangeSize(value){
         this.fontSize = value;
         if($('#inputBox').length != 0){
             $('#inputBox').css('font-size', this.fontSize);
@@ -74,11 +83,11 @@ class AddText extends PaintFunction{
             // Reset
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             // Modify the style
-            this.addText(this.contextDraft, this.text, coord[0], coord[1], this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);                   
+            this.addText(this.contextDraft, this.text, this.origX, this.origY, this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);                   
         }
     }
 
-    onChangeFontFamily(coord,value){
+    onChangeFontFamily(value){
         this.fontFamily = value;
         if($('#inputBox').length != 0){
             $('#inputBox').css('font-family', this.fontFamily);
@@ -86,11 +95,11 @@ class AddText extends PaintFunction{
             // Reset
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             // Modify the style
-            this.addText(this.contextDraft, this.text, coord[0], coord[1], this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);                   
+            this.addText(this.contextDraft, this.text, this.origX, this.origY, this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);                   
         }
     }
 
-    onChangeFillOrStroke(coord,value){
+    onChangeFillOrStroke(value){
         if(value === 'stroke'){          
             this.isStroke = true;
         }else{
@@ -101,11 +110,11 @@ class AddText extends PaintFunction{
             // Reset
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             // Modify the style
-            this.addText(this.contextDraft, this.text, coord[0], coord[1], this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);     
+            this.addText(this.contextDraft, this.text, this.origX, this.origY, this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);     
         }
     }
 
-    onChangeStyle(coord,value){
+    onChangeStyle(value){
         switch(value) {
             case 'normal':
                 this.fontWeight = 'normal';
@@ -136,12 +145,13 @@ class AddText extends PaintFunction{
             // Reset
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             // Modify the style
-            this.addText(this.contextDraft, this.text, coord[0], coord[1], this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);                   
+            this.addText(this.contextDraft, this.text, this.origX, this.origY, this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);                   
         }
     }
 
-    onDblClick(coord,event){
-        this.addText(this.contextReal, this.text, coord[0], coord[1], this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);
+    onDblClick(event){
+        this.isEditing = false;
+        this.addText(this.contextReal, this.text, this.origX, this.origY, this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);
         $('#inputBox').remove();
 
         //Reset the canvas
