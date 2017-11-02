@@ -26,6 +26,7 @@
 body{
     overflow:hidden;
 }
+
 #canvas-container{
     height: 80%;
     width: 75%;
@@ -38,7 +39,7 @@ body{
 
 .img-responsive{
     display: inline-block;
-font: normal normal normal 14px;
+    font: normal normal normal 14px;
     font-size: inherit;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -71,11 +72,6 @@ font: normal normal normal 14px;
 
 #row1 button,
 #row2 button,
-#row3 button,
-#row4 button,
-#row5 button,
-#row6 button,
-#row7 button,
 #text-tool {
     font-size: 3vw;
     width: 22%;
@@ -100,9 +96,7 @@ font: normal normal normal 14px;
 #row6,
 #row7,
 #row8,
-#stroke,
-#fill,
-#backg,
+
 #line,
 #linew,
 #random {
@@ -134,29 +128,39 @@ font: normal normal normal 14px;
 
 
 
-#stroke,
+/*#stroke,
 #fill,
 #backg {
     height: 10%;
-}
+}*/
 
 .sp-preview {
     width: 70%;
     height: 70%;
-    
-    
 }
 
+label.panel1,
+label.panel2,
+label.panel3,
+label.panel4{
+    font:13px;
+    display:inline;
+}
 
+label.panel5,
+label.panel6,
+label.panel7{
+    font:13px;
+    display: inline;
+}
 
-
-#selectors button {
+/*#selectors button {
     width: 33%;
-}
+}*/
 
-#stroke label {
+/*#stroke label {
    font-size: 1vh; 
-}
+}*/
 
 #backg button {
     margin-bottom: 10px;
@@ -211,13 +215,7 @@ font: normal normal normal 14px;
 
 /* TEXT  */
 
-#sizerow label,
-#fosrow label,
-#ffrow label,
-#stylerow label {
-    display: inline;
-    font-size: 5px;
-}
+
 
 #add-text {
     margin-top: 10px;
@@ -231,8 +229,7 @@ font: normal normal normal 14px;
 
 #textbox {
     background-color: lightgrey;
-    margin-top: 10px;
-    height: 20%;
+    height: 85px;
 }
 
 
@@ -244,33 +241,19 @@ font: normal normal normal 14px;
     font-size: 10px;
 }
 
+/*.btn {
+  border-radius: 7px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin: 0;
+  text-transform: uppercase;
+}*/
 
 /* Selectors  */
 
 .sp-dd {
     height: 30px;
 }
-
-/* Media query */
-
-@media screen and (max-width: 820px) {
-
-    #text-panel {
-        height: 10%;
-    }
-
-    #menu1 {
-        display: inline;
-    }
-
-    .menu {
-        display: none;
-    }
-   
-
-    
-    
-}
-
-
-

@@ -8,8 +8,9 @@ $("#strokestyle").spectrum({
     maxSelectionSize: 10,
     preferredFormat: "hex",
     localStorageKey: "spectrum.demo",
-    showButtons: false,
+    showButtons: true,
     showPalette: true,
+    flat:false,
     hideAfterPaletteSelect: true,
     clickoutFiresChange: true,
     move: function (color) {

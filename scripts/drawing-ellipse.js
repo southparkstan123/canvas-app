@@ -22,7 +22,6 @@ class DrawingEllipse extends PaintFunction {
     onMouseUp(coord, event, dragging) {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         if (dragging) {
-
             this.contextReal.strokeStyle = this.strokeColor;
             this.contextReal.fillStyle = this.fillColor;
             this.drawEllipse(this.contextReal, this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY);
