@@ -2,8 +2,9 @@
 
 <head>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
 
 </head>
 
@@ -155,6 +156,7 @@
 
         </div>
 
+                <button id="drawing-random">Random</button>
 
 
         <div id="canvas-container">
@@ -171,73 +173,97 @@
     <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script> -->
-        <script src='scripts/spectrum.js'></script>
+    <script src='scripts/spectrum.js'></script>
 
-        <link rel='stylesheet' href='css/spectrum.css' />
-        <link href="css/style.css" rel="stylesheet" type='text/css'>
+    <link rel='stylesheet' href='css/spectrum.css' />
+    <link href="css/style.css" rel="stylesheet" type='text/css'>
 
-        <script type='text/javascript' src="scripts/canvas-common.js"></script>
-        <script type='text/javascript' src="scripts/drawing-line.js"></script>
-        <script type='text/javascript' src="scripts/drawing-ellipse.js"></script>
-        <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
-        <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
-        <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
-        <script type='text/javascript' src="scripts/drawing-curve.js"></script>
-        <script type='text/javascript' src="scripts/drawing-polygon.js"></script>
-        <script type='text/javascript' src="scripts/drawing-random.js"></script>
+    <script type='text/javascript' src="scripts/canvas-common.js"></script>
+    <script type='text/javascript' src="scripts/drawing-line.js"></script>
+    <script type='text/javascript' src="scripts/drawing-ellipse.js"></script>
+    <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
+    <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
+    <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
+    <script type='text/javascript' src="scripts/drawing-curve.js"></script>
+    <script type='text/javascript' src="scripts/drawing-polygon.js"></script>
+    <script type='text/javascript' src="scripts/drawing-random.js"></script>
 
 
-        <script type='text/javascript' src="scripts/eraser.js"></script>
+    <script type='text/javascript' src="scripts/eraser.js"></script>
 
-        <script type='text/javascript' src="scripts/setstrokestyle.js"></script>
-        <script type='text/javascript' src="scripts/setfillstyle.js"></script>
-        <script type='text/javascript' src="scripts/setbackground.js"></script>
+    <script type='text/javascript' src="scripts/setstrokestyle.js"></script>
+    <script type='text/javascript' src="scripts/setfillstyle.js"></script>
+    <script type='text/javascript' src="scripts/setbackground.js"></script>
 
-        <script type='text/javascript' src="scripts/eyedropper.js"></script>
-        <script type='text/javascript' src="scripts/setlinewidth.js"></script>
-        <script type='text/javascript' src="scripts/setlinetype.js"></script>
-        <script type='text/javascript' src="scripts/setlinejoin.js"></script>
-        <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
-        <script type='text/javascript' src="scripts/add-text.1.js"></script>
-
-        <script type='text/javascript' src="scripts/useHammerjs.js"></script>
+    <script type='text/javascript' src="scripts/eyedropper.js"></script>
+    <script type='text/javascript' src="scripts/setlinewidth.js"></script>
+    <script type='text/javascript' src="scripts/setlinetype.js"></script>
+    <script type='text/javascript' src="scripts/setlinejoin.js"></script>
+    <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
+    <script type='text/javascript' src="scripts/add-text.1.js"></script>
 
 
 
 
-        <script type='text/javascript'>
-            $('#drawing-rectangle').click(() => {
-                currentFunction = new DrawingRectangle(contextReal, contextDraft);
-            });
-            $('#drawing-line').click(() => {
-                currentFunction = new DrawingLine(contextReal, contextDraft);
-            });
-            $('#drawing-ellipse').click(() => {
-                currentFunction = new DrawingEllipse(contextReal, contextDraft);
-            });
-            $('#drawing-strokerectangle').click(() => {
-                currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
-            });
-            $('#drawing-straight-line').click(() => {
-                currentFunction = new DrawingStraightLine(contextReal, contextDraft);
-            });
-            $('#drawing-curve').click(() => {
-                currentFunction = new DrawingCurve(contextReal, contextDraft);
-            });
-            $('#drawing-polygon').click(() => {
-                currentFunction = new DrawingPolygon(contextReal, contextDraft);
-            });
-            $('#eraser').click(function () {
-                currentFunction = new Eraser(contextReal, contextDraft);
-            });
 
-            $('#clear').click(() => {
-                contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+
+    <script type='text/javascript'>
+        $('#drawing-rectangle').click(() => {
+            currentFunction = new DrawingRectangle(contextReal, contextDraft);
+        });
+        $('#drawing-line').click(() => {
+            currentFunction = new DrawingLine(contextReal, contextDraft);
+        });
+        $('#drawing-ellipse').click(() => {
+            currentFunction = new DrawingEllipse(contextReal, contextDraft);
+        });
+        $('#drawing-strokerectangle').click(() => {
+            currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
+        });
+        $('#drawing-straight-line').click(() => {
+            currentFunction = new DrawingStraightLine(contextReal, contextDraft);
+        });
+        $('#drawing-curve').click(() => {
+            currentFunction = new DrawingCurve(contextReal, contextDraft);
+        });
+        $('#drawing-polygon').click(() => {
+            currentFunction = new DrawingPolygon(contextReal, contextDraft);
+        });
+
+        $('#drawing-random').click(() => {
+            currentFunction = new DrawingRandom(contextReal, contextDraft);
+        });
+
+        $('#eraser').click(function () {
+            currentFunction = new Eraser(contextReal, contextDraft);
+        });
+
+        $('#clear').click(() => {
+            contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+            contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+        });
+
+        let undoClicked = false; //first click of Undo
+        $('#undo').click(() => {
+            var canvasPic = new Image();
+            if (undoClicked === false) { //if firstclick needs extra pop
+                undoList.pop();
+                undoClicked = true; // if not firstclick only needs to pop once so returns true
+            }
+            if (undoList.length == 0) {  // to clear the canvas when there is no more image stored
+                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                return;
+            }
+            canvasPic.src = undoList.pop();
+
+            canvasPic.onload = function () {
                 contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
                 contextReal.drawImage(canvasPic, 0, 0);
-            });
 
-        /* Zoom function
+            }
+        });
+
+        // Zoom function
         let translatePos = {
             x: canvasReal.width / 2,
             y: canvasReal.height / 2
@@ -264,7 +290,6 @@
             contextReal.scale(scale, scale);
             contextReal.restore();
         }, false);
-        */
 
         $("#text-tool").click(function () {
             currentFunction = new AddText(contextReal, contextDraft);
@@ -296,17 +321,6 @@
         $("#eyedropper").click(function () {
             currentFunction = new EyeDropper(contextReal);
         });
-
-        /* make canvas responsive to screen size
-
-        $(window).load(function (){
-            container = $('#canvas-container');
-
-            
-        }
-
-        */
-
 
         currentFunction = new DrawingLine(contextReal, contextDraft);
     </script>

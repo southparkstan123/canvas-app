@@ -32,7 +32,6 @@ class AddText extends PaintFunction{
         //Reset
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
 
-
         //If the canvas has input box, isEditing become true
         if($('#inputBox').length != 0){
             this.isEditing = true;
@@ -41,6 +40,7 @@ class AddText extends PaintFunction{
         }
 
         if(this.input["0"].value == "" && !this.isEditing){
+
 
             this.reset();
 
@@ -57,6 +57,7 @@ class AddText extends PaintFunction{
         }else{
             this.text = this.input["0"].value;
             //this.fontSize = this.input["0"].style.fontSize;
+
 
             $('#inputBox').remove();
             this.addText(this.contextDraft, this.text, coord[0], coord[1], this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);
@@ -151,7 +152,10 @@ class AddText extends PaintFunction{
     }
 
     onDblClick(event){
+<<<<<<< HEAD
         this.isEditing = false;
+=======
+>>>>>>> 748613b73d8258f1c7475f1ba0fdb9125dda6f95
         this.addText(this.contextReal, this.text, this.origX, this.origY, this.isStroke, this.fontSize, this.fontStyle, this.fontWeight, this.fontFamily);
         $('#inputBox').remove();
 
