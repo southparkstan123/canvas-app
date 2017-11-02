@@ -69,11 +69,15 @@ class AddText extends PaintFunction{
         context.strokeStyle = this.strokeColor;
         context.fillStyle = this.fillColor;
 
+        let lineWidth = context.lineWidth;// Save the global line width first
+        context.lineWidth = 1;// Set the line width of stroke text as 1
+
         if(isStroke){
             context.strokeText(text, xpos, ypos);
         }else{
             context.fillText(text, xpos, ypos);
         }
+        context.lineWidth = lineWidth;// Set the original line width as global
     }
 
     onChangeSize(value){
