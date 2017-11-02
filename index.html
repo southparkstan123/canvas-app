@@ -2,8 +2,9 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
 
 </head>
 
@@ -14,128 +15,153 @@
 
         <div class="menu">
 
-                
+
             <div id="row1">
                 <button class="fa fa-paint-brush" id="drawing-line"></button>
                 <button class="fa fa-pencil" id="drawing-straight-line"></button>
+                <button class="btn btn-danger fa fa-circle" id="drawing-curve">Curve L</button>
+                <button class="fa fa-circle" id="drawing-ellipse"></button>
             </div>
 
             <div id="row2">
-                <button class="btn btn-danger fa fa-circle" id="drawing-curve">Curve L</button>
-                <button class="fa fa-circle" id="drawing-ellipse">Circle</button>
-            </div>
-
-            <div id="row3">
                 <button class="fa fa-stop" id="drawing-rectangle"></button>
                 <button class="fa fa-square-o" id="drawing-strokerectangle"></button>
+                <button class="fa fa-caret-right" id="drawing-polygon"></button>
+                <button class="btn btn-danger fa fa-paint-brush" id="eyedropper"></button>
             </div>
 
-            <div id="row4">
-                <button class="fa fa-caret-right" id="drawing-polygon">P</button>
-                <button class="btn btn-danger fa fa-paint-brush" id="eyedropper">E</button>
+            <!-- Font -->
+            <div id="textbox">
+                <div id="row5">
+                    <button class="fa fa-font" id="text-tool"></button>
+                </div>
+
+                <div id="text-panel">
+                    <form id="add-text">
+
+                        <div id="sizerow">
+                            <label for="size">Size:</label>
+                            <select id="size" name="size">
+                        <option value = "9" selected>9px</option>
+                        <option value = "12">12px</option>
+                        <option value = "14">14px</option>
+                        <option value = "16">16px</option>
+                        <option value = "20">20px</option>
+                        <option value = "48">48px</option>
+                        <option value = "72">72px</option>
+                        <option value = "96">96px</option>
+                        <option value = "144">144px</option>
+                        <option value = "200">200px</option>
+                    </select>
+                        </div>
+
+                        <div id="fosrow">
+                            <label for="fillOrStroke">Fill Or Stroke:</label>
+                            <select id="fillOrStroke" name="fillOrStroke">
+            <option value = "fill" selected>fill</option>
+            <option value = "stroke">stroke</option>
+                    </select>
+                        </div>
+
+
+                        <div id="ffrow">
+                            <label for="font-family">Font Family:</label>
+                            <select id="font-family" name="fontFamily">
+            <option value = "Arial" selected>Arial</option>
+            <option value = "Times New Roman">Times New Roman</option>
+                    </select>
+                        </div>
+
+                        <div id="stylerow">
+                            <label for="style">Style:</label>
+                            <select id="style" name="style">
+            <option value = "normal" selected>Normal</option>
+            <option value = "bold">Bold</option>
+            <option value = "italic">Italic</option>
+            <option value = "both">Both</option>
+                </select>
+                        </div>
+
+                    </form>
+
+                </div>
             </div>
+
+
+
 
             <div id="selectors">
 
+
+
                 <div id="stroke">
-                    <button><input type='text' id="strokestyle" />Stroke Style</button>
+                    <label for="stroke">Stoke Style:</label>
+                    <input type='text' id="strokestyle" />
                 </div>
 
                 <div id="fill">
-                    <button><input type='text' id="fillstyle" />Fill Style</button>
+                    <label for="fill">Fill Style:</label>
+                    <input type='text' id="fillstyle" />
                 </div>
 
                 <div id="backg">
-                    <button><input type='text' id="background" />Background</button>
+                    <label for="background">Background:</label>
+                    <input type='text' id="background" />
                 </div>
 
-           
 
-            <div>
-                <input id="linewidth" type="range" orient="vertical" name="linewidth" min="1" max="100">
-            </div>
 
-            <div id="Line">
+                <div id="linew">
+                    <input id="linewidth" type="range" orient="vertical" name="linewidth" min="1" max="100">
+                </div>
 
-                <select name="LineType" id="linetype">
+                <div id="Line">
+
+                    <select name="LineType" id="linetype">
                     <option value="butt">butt</option>
                     <option value="round">round</option>
                     <option value="square">square</option>
-                </select>
+                    </select>
 
-                <select name="LineJoin" id="linejoin">
+                    <select name="LineJoin" id="linejoin">
                     <option value="butt">miter</option>
                     <option value="round">round</option>
                     <option value="square">bevel</option>
-                </select>
-                <!--<select name="linedash" id="linedash">
+                    </select>
+                    <!--<select name="linedash" id="linedash">
             <option value="[0]">No Dash</option>
             <option value="[5]">Dash</option>
         </select>-->
-        <span class="btn btn-danger fa fa-font" id="text-tool">Text Tool</span>
-        <div id="text-panel">
-            <form id="add-text">
-                <label for="size">Size:</label>
-                <select id = "size" name="size">
-                    <option value = "9" selected>9px</option>
-                    <option value = "12">12px</option>
-                    <option value = "14">14px</option>
-                    <option value = "16">16px</option>
-                    <option value = "20">20px</option>
-                    <option value = "48">48px</option>
-                    <option value = "72">72px</option>
-                    <option value = "96">96px</option>
-                    <option value = "144">144px</option>
-                    <option value = "200">200px</option>
-                </select>
-                <label for="fillOrStroke">Fill Or Stroke:</label>
-                <select id = "fillOrStroke" name="fillOrStroke">
-                    <option value = "fill" selected>fill</option>
-                    <option value = "stroke">stroke</option>
-                </select>
-                <label for="font-family">Font Family:</label>
-                <select id ="font-family" name="fontFamily">
-                    <option value = "Arial" selected>Arial</option>
-                    <option value = "Times New Roman">Times New Roman</option>
-                </select>
-                <label for="style">Style:</label>
-                <select id ="style" name="style">
-                    <option value = "normal" selected>Normal</option>
-                    <option value = "bold">Bold</option>
-                    <option value = "italic">Italic</option>
-                    <option value = "both">Both</option>
-                </select>
-            </form>
-        </div>
-
-
-
+                </div>
             </div>
-        </div>
+
+            <div id="row4">
+                <button class="fa fa-arrow-left" id="minus"></button>
+                <button class="fa fa-arrow-right" id="plus"></button>
+                <button class="fa fa-eraser" id="eraser"></button>
+            </div>
+
+
+
+
+
 
             <div id="row5">
                 <button class="fa fa-arrow-left" id="undo"></button>
                 <button class="fa fa-arrow-right" id="redo"></button>
-            </div>
-
-            <div id="row6">
-                <button class="fa fa-eraser" id="eraser"></button>
                 <button class="fa fa-undo" id="clear"></button>
             </div>
 
-            <div id="zoom">
-                <button class="fa fa-arrow-left" id="minus"></button>
-                <button class="fa fa-arrow-right" id="plus"></button>
-            </div>
+
 
         </div>
 
 
 
-            <div id="canvas-container">
-                <canvas id="canvas-real" class="canvas" width='800px' height='500px'></canvas>
-                <canvas id="canvas-draft" class="canvas" width='800px' height='500px'></canvas>
-            </div>
+        <div id="canvas-container">
+            <canvas id="canvas-real" class="canvas" width='800px' height='500px'></canvas>
+            <canvas id="canvas-draft" class="canvas" width='800px' height='500px'></canvas>
+        </div>
 
     </div>
 
@@ -143,155 +169,152 @@
 
 
 
-        <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
-        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script> -->
-        <script src='scripts/spectrum.js'></script>
+    <script src='scripts/spectrum.js'></script>
 
-        <link rel='stylesheet' href='css/spectrum.css' />
-        <link href="css/style.css" rel="stylesheet" type='text/css'>
+    <link rel='stylesheet' href='css/spectrum.css' />
+    <link href="css/style.css" rel="stylesheet" type='text/css'>
 
-        <script type='text/javascript' src="scripts/canvas-common.js"></script>
-        <script type='text/javascript' src="scripts/drawing-line.js"></script>
-        <script type='text/javascript' src="scripts/drawing-ellipse.js"></script>
-        <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
-        <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
-        <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
-        <script type='text/javascript' src="scripts/drawing-curve.js"></script>
-        <script type='text/javascript' src="scripts/drawing-polygon.js"></script>
-
-
-        <script type='text/javascript' src="scripts/eraser.js"></script>
-
-        <script type='text/javascript' src="scripts/setstrokestyle.js"></script>
-        <script type='text/javascript' src="scripts/setfillstyle.js"></script>
-        <script type='text/javascript' src="scripts/setbackground.js"></script>
-
-        <script type='text/javascript' src="scripts/eyedropper.js"></script>
-        <script type='text/javascript' src="scripts/setlinewidth.js"></script>
-        <script type='text/javascript' src="scripts/setlinetype.js"></script>
-        <script type='text/javascript' src="scripts/setlinejoin.js"></script>
-        <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
-        <script type='text/javascript' src="scripts/add-text.1.js"></script>
+    <script type='text/javascript' src="scripts/canvas-common.js"></script>
+    <script type='text/javascript' src="scripts/drawing-line.js"></script>
+    <script type='text/javascript' src="scripts/drawing-ellipse.js"></script>
+    <script type='text/javascript' src="scripts/drawing-rectangle.js"></script>
+    <script type='text/javascript' src="scripts/drawing-strokerectangle.js"></script>
+    <script type='text/javascript' src="scripts/drawing-straight-line.js"></script>
+    <script type='text/javascript' src="scripts/drawing-curve.js"></script>
+    <script type='text/javascript' src="scripts/drawing-polygon.js"></script>
 
 
+    <script type='text/javascript' src="scripts/eraser.js"></script>
+
+    <script type='text/javascript' src="scripts/setstrokestyle.js"></script>
+    <script type='text/javascript' src="scripts/setfillstyle.js"></script>
+    <script type='text/javascript' src="scripts/setbackground.js"></script>
+
+    <script type='text/javascript' src="scripts/eyedropper.js"></script>
+    <script type='text/javascript' src="scripts/setlinewidth.js"></script>
+    <script type='text/javascript' src="scripts/setlinetype.js"></script>
+    <script type='text/javascript' src="scripts/setlinejoin.js"></script>
+    <!--<script type='text/javascript' src="scripts/setlinedash.js"></script>-->
+    <script type='text/javascript' src="scripts/add-text.1.js"></script>
 
 
 
-        <script type='text/javascript'>
-            $('#drawing-rectangle').click(() => {
-                currentFunction = new DrawingRectangle(contextReal, contextDraft);
-            });
-            $('#drawing-line').click(() => {
-                currentFunction = new DrawingLine(contextReal, contextDraft);
-            });
-            $('#drawing-ellipse').click(() => {
-                currentFunction = new DrawingEllipse(contextReal, contextDraft);
-            });
-            $('#drawing-strokerectangle').click(() => {
-                currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
-            });
-            $('#drawing-straight-line').click(() => {
-                currentFunction = new DrawingStraightLine(contextReal, contextDraft);
-            });
-            $('#drawing-curve').click(() => {
-                currentFunction = new DrawingCurve(contextReal, contextDraft);
-            });
-            $('#drawing-polygon').click(() => {
-                currentFunction = new DrawingPolygon(contextReal, contextDraft);
-            });
-            $('#eraser').click(function () {
-                currentFunction = new Eraser(contextReal, contextDraft);
-            });
 
-            $('#clear').click(() => {
-                contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+
+    <script type='text/javascript'>
+        $('#drawing-rectangle').click(() => {
+            currentFunction = new DrawingRectangle(contextReal, contextDraft);
+        });
+        $('#drawing-line').click(() => {
+            currentFunction = new DrawingLine(contextReal, contextDraft);
+        });
+        $('#drawing-ellipse').click(() => {
+            currentFunction = new DrawingEllipse(contextReal, contextDraft);
+        });
+        $('#drawing-strokerectangle').click(() => {
+            currentFunction = new DrawingStrokeRectangle(contextReal, contextDraft);
+        });
+        $('#drawing-straight-line').click(() => {
+            currentFunction = new DrawingStraightLine(contextReal, contextDraft);
+        });
+        $('#drawing-curve').click(() => {
+            currentFunction = new DrawingCurve(contextReal, contextDraft);
+        });
+        $('#drawing-polygon').click(() => {
+            currentFunction = new DrawingPolygon(contextReal, contextDraft);
+        });
+        $('#eraser').click(function () {
+            currentFunction = new Eraser(contextReal, contextDraft);
+        });
+
+        $('#clear').click(() => {
+            contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+            contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+        });
+
+        let undoClicked = false; //first click of Undo
+        $('#undo').click(() => {
+            var canvasPic = new Image();
+            if (undoClicked === false) { //if firstclick needs extra pop
+                undoList.pop();
+                undoClicked = true; // if not firstclick only needs to pop once so returns true
+            }
+            if (undoList.length == 0) {  // to clear the canvas when there is no more image stored
                 contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
-            });
+                return;
+            }
+            canvasPic.src = undoList.pop();
 
-            let undoClicked = false; //first click of Undo
-            $('#undo').click(() => {
-                var canvasPic = new Image();
-                if (undoClicked === false) { //if firstclick needs extra pop
-                    undoList.pop();
-                    undoClicked = true; // if not firstclick only needs to pop once so returns true
-                }
-                if (undoList.length == 0) {  // to clear the canvas when there is no more image stored
-                    contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
-                    return;
-                }
-                canvasPic.src = undoList.pop();
+            canvasPic.onload = function () {
+                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                contextReal.drawImage(canvasPic, 0, 0);
+            }
+        });
 
-                canvasPic.onload = function () {
-                    contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
-                    contextReal.drawImage(canvasPic, 0, 0);
-                }
-            });
+        // Zoom function
+        let translatePos = {
+            x: canvasReal.width / 2,
+            y: canvasReal.height / 2
+        };
+        let scale = 1.0;
+        let scaleMultiplier = 0.8;
+        let startDragOffset = {};
+        let mouseDown = false;
 
-            // Zoom function
-            let translatePos = {
-                x: canvasReal.width / 2,
-                y: canvasReal.height / 2
-            };
-            let scale = 1.0;
-            let scaleMultiplier = 0.8;
-            let startDragOffset = {};
-            let mouseDown = false;
+        $('#minus').click(function () {
+            scale *= scaleMultiplier;
 
-            $('#minus').click(function (){
-                scale *= scaleMultiplier;
+            contextReal.save();
+            contextReal.translate(translatePos.x, translatePos.y);
+            contextReal.scale(scale, scale);
+            contextReal.restore();
+        }, false);
 
-                contextReal.save();
-                contextReal.translate(translatePos.x, translatePos.y);
-                contextReal.scale(scale, scale);
-                contextReal.restore();
-            }, false);
+        $('#plus').click(function () {
+            scale /= scaleMultiplier;
 
-            $('#plus').click(function (){
-                scale /= scaleMultiplier;
+            contextReal.save();
+            contextReal.translate(translatePos.x, translatePos.y);
+            contextReal.scale(scale, scale);
+            contextReal.restore();
+        }, false);
 
-                contextReal.save();
-                contextReal.translate(translatePos.x, translatePos.y);
-                contextReal.scale(scale, scale);
-                contextReal.restore();
-            }, false);
-
-            $("#text-tool").click(function(){
+        $("#text-tool").click(function () {
             currentFunction = new AddText(contextReal, contextDraft);
             currentFunction.reset();
             //Listen the input fields change
-            $('select[name="fontFamily"]').change(function(e){
+            $('select[name="fontFamily"]').change(function (e) {
                 currentFunction.onChangeFontFamily(e.target.value);
             })
 
-            $('select[name="fillOrStroke"]').change(function(e){
+            $('select[name="fillOrStroke"]').change(function (e) {
                 currentFunction.onChangeFillOrStroke(e.target.value);
             })
 
-            $('select[name="style"]').change(function(e){
+            $('select[name="style"]').change(function (e) {
                 currentFunction.onChangeStyle(e.target.value);
             })
 
-            $('select[name="size"]').change(function(e){
+            $('select[name="size"]').change(function (e) {
                 currentFunction.onChangeSize(e.target.value);
             })
 
-            $('select[name="lineWidth"]').change(function(e){
+            $('select[name="lineWidth"]').change(function (e) {
                 currentFunction.onChangeLineWidth(e.target.value);
             })
 
         });
 
 
-            $("#eyedropper").click(function () {
-                currentFunction = new EyeDropper(contextReal);
-            });
+        $("#eyedropper").click(function () {
+            currentFunction = new EyeDropper(contextReal);
+        });
 
-            currentFunction = new DrawingLine(contextReal, contextDraft);
-        </script>
+        currentFunction = new DrawingLine(contextReal, contextDraft);
+    </script>
 </body>
 
 </html>
-
-
-
