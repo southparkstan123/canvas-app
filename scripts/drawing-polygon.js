@@ -42,6 +42,8 @@ class DrawingPolygon extends PaintFunction {
             this.origY1 = coord[1];
 
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+
+
             this.state = 'EndStage';
 
         }
@@ -102,7 +104,7 @@ class DrawingPolygon extends PaintFunction {
             this.contextReal.stroke();
             this.contextReal.strokeStyle = this.strokeColor;
             this.contextReal.fillStyle = this.fillColor;
-            this.contextReal.fill();            
+            //this.contextReal.fill();            
             this.contextReal.closePath();
             this.origX1 = coord[0];
             this.origY1 = coord[1];
@@ -118,9 +120,9 @@ class DrawingPolygon extends PaintFunction {
 
 
         } else if (this.state === "intermediate") {
-        } else if (this.state === "End") {
-            this.state === 'start';
-        }
+        } //else if (this.state === "End") {
+            //this.state === 'start';
+        //}
 
     }
     onMouseLeave() { }

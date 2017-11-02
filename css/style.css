@@ -26,6 +26,18 @@
 body{
     overflow:hidden;
 }
+#canvas-container{
+    height:768px;
+    margin: 5px;
+}
+
+.img-responsive{
+    display: inline-block;
+font: normal normal normal 14px;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
 
 #canvas-container {
     float: right;
@@ -63,18 +75,21 @@ body{
 #row2 button,
 #row3 button,
 #row4 button,
-#row5 button {
-    font-size: 4vw;
-    width: 60px;
-    height: 60px;
+#row5 button,
+#row6 button,
+#row7 button,
+#text-tool {
+    font-size: 3vw;
+    width: 40px;
+    height: 40px;
     background-color: grey;  
 }
 
-#row6 button {
+#row8 button {
     background-color: red;
     font-size: 4vw;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
 }
 
 
@@ -84,23 +99,55 @@ body{
 #row4,
 #row5,
 #row6,
-#selectors div {
+#row7,
+#row8,
+#stroke,
+#fill,
+#backg,
+#line,
+#linew {
     display: flex;
     justify-content: center;
 }
 
 #selectors {
     margin: 10px 0;
-}
-
-#selectors button {
-    width: 95%;
+    padding: 9px 0;
+    background-color: darkgray;
 }
 
 .sp-replacer {
-    padding: 4px 0;
-    width: 40%;
+    width: 70%;
+    height: 70%;
+    border: none;
+    padding-right: 0;
+    margin-right: 5%;
+}
+
+
+
+#stroke,
+#fill,
+#backg {
+    height: 10%;
+}
+
+.sp-preview {
+    width: 70%;
+    height: 70%;
     
+    
+}
+
+
+
+
+#selectors button {
+    width: 33%;
+}
+
+#stroke label {
+   font-size: 1vh; 
 }
 
 #backg button {
@@ -110,6 +157,10 @@ body{
 #linewidth {
     margin-bottom: 10px;
     position: relative;
+}
+
+#fill {
+    background: none;
 }
 
 /* Menu Buttons - pop up message */
@@ -150,30 +201,48 @@ body{
     width: 80px;
 }
 
+/* TEXT  */
 
-
-
-
-/*  
-
-
-
-.col-sm-4 .buttons {
-    padding: 15px;
-    width: 90%;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
+#sizerow label,
+#fosrow label,
+#ffrow label,
+#stylerow label {
+    display: inline;
+    font-size: 5px;
 }
 
-.btn-group {
-    display: flex;
-    justify-content: center;
-    font-size: 30px;
+#add-text {
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+#textbox {
+    background-color: lightgrey;
+    margin-top: 10px;
+}
+
+
+#font-family {
+    width: 45%;
+}
+
+#size option {
+    font-size: 10px;
+}
+
+
+/* Selectors  */
+
+.sp-dd {
+    height: 30px;
+}
+
+/* Media query 
+
+@media screen and (max-width: 767px) {
+    
     
 }
- */
 
-
-
+*/
 
