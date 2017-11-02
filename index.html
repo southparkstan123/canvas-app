@@ -30,16 +30,18 @@
                 <button class="btn btn-danger fa fa-paint-brush" id="eyedropper"></button>
             </div>
 
-            <div id="random">
+            <div id="row3">
             <button id="drawing-random">Random</button>
-            </div>
+            <button id="drawing-random-dots">Random Dots</button>
+            <button class="fa fa-font" id="text-tool"></button>
+            
+        </div>
+
         </div>
 
             <!-- Font -->
             <div id="textbox">
-                <div id="row5">
-                    <button class="fa fa-font" id="text-tool"></button>
-                </div>
+                
 
                 <div id="text-panel">
                     <form id="add-text">
@@ -140,9 +142,11 @@
                 </div>
             </div>
 
+            <div id="rowbottom">
             <div id="row4">
-                <button class="fa fa-arrow-left" id="minus"></button>
-                <button class="fa fa-arrow-right" id="plus"></button>
+                <!-- <button class="fa fa-arrow-left" id="minus"></button>
+                <button class="fa fa-arrow-right" id="plus"></button> -->
+                <button class="fa fa-paint" id="upload">Firebase</button>
                 <button class="fa fa-eraser" id="eraser"></button>
             </div>
 
@@ -156,13 +160,13 @@
                 <button class="fa fa-arrow-right" id="redo"></button>
                 <button class="fa fa-undo" id="clear"></button>
             </div>
+        </div>
 
 
 
         </div>
 
-        <button id="drawing-random-dots">Random Dots</button>
-        <button id="drawing-random-line">Random Line</button>
+        
 
 
         <div id="canvas-container">
@@ -436,7 +440,13 @@
          contextReal.drawImage(tempCanvas,0,0);
      }
  });
- */
+ */      $(window).resize(function(){
+             if($(window).width()>500){
+            
+                $('.menu').show(300);
+            
+            }
+        });
 
       
         $("#eyedropper").click(function () {
