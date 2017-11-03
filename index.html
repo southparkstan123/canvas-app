@@ -1,113 +1,90 @@
 <html>
 
 <head>
-    <!-- <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"> -->
-
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
         crossorigin="anonymous">
-
 </head>
 
 <body>
-
     <div class='clearfix container'>
-
-
-
-
         <div id="canvas-container">
             <canvas id="canvas-real" class="canvas" width='800px' height='500px'></canvas>
             <canvas id="canvas-draft" class="canvas" width='800px' height='500px'></canvas>
         </div>
         <div class="menu">
-            
-
+            <!-- Shape -->
+            <button id="drawing-rectangle">Rectangle Tool</button>
             <button id="drawing-line">Pencil Tool</button>
             <button id="drawing-straight-line">Straight Tool</button>
             <button id="drawing-curve">Curve Tool</button>
             <button id="drawing-ellipse">Ellipse Tool</button>
-            <button id="drawing-rectangle">Rectangle Tool</button>
-
             <button id="drawing-strokerectangle">Stroke Rectangle</button>
             <button id="drawing-polygon">Polygon</button>
             <button id="eyedropper">Eyedropper</button>
             <button id="drawing-random-dots">Random Dots</button>
             <button id="text-tool">Text Tool</button>
             
-
             <!-- Font -->
-            <!-- <div id="textbox">
-                <div id="text-panel">
-                    <form id="add-text"> -->
-                        <div class="text-panel">
-                            <label class="panel1" for="size">Size:</label>
-                            <select id="size" name="size">
-                                <option value = "9" selected>9px</option>
-                                <option value = "12">12px</option>
-                                <option value = "14">14px</option>
-                                <option value = "16">16px</option>
-                                <option value = "20">20px</option>
-                                <option value = "48">48px</option>
-                                <option value = "72">72px</option>
-                                <option value = "96">96px</option>
-                                <option value = "144">144px</option>
-                                <option value = "200">200px</option>
-                            </select>
-                        </div>
-                        <div class="text-panel">
-                            <label class="panel2" for="fillOrStroke">Fill Or Stroke:</label>
-                            <select id="fillOrStroke" name="fillOrStroke">
-                                <option value = "fill" selected>fill</option>
-                                <option value = "stroke">stroke</option>
-                            </select>
-                        </div>
-                        <div class="text-panel">
-                            <label class="panel3" for="font-family">Font Family:</label>
-                            <select id="font-family" name="fontFamily">
-                                <option value = "Arial" selected>Arial</option>
-                                <option value = "Times New Roman">Times New Roman</option>
-                            </select>
-                        </div>
-                        <div class="text-panel">
-                            <label class="panel4" for="style">Style:</label>
-                            <select id="style" name="style">
-                                <option value = "normal" selected>Normal</option>
-                                <option value = "bold">Bold</option>
-                                <option value = "italic">Italic</option>
-                                <option value = "both">Both</option>
-                            </select>
-                        </div>
-                    <!-- </form>
-                </div>
-            </div> -->
-            <div id="selectors">
-                <div id="stroke">
+            <div class="text-panel">
+                <label class="panel1" for="size">Size:</label>
+                <select id="size" name="size">
+                    <option value = "9" selected>9px</option>
+                    <option value = "12">12px</option>
+                    <option value = "14">14px</option>
+                    <option value = "16">16px</option>
+                    <option value = "20">20px</option>
+                    <option value = "48">48px</option>
+                    <option value = "72">72px</option>
+                    <option value = "96">96px</option>
+                    <option value = "144">144px</option>
+                    <option value = "200">200px</option>
+                </select>
+            </div>
+            <div class="text-panel">
+                <label class="panel2" for="fillOrStroke">Fill Or Stroke:</label>
+                <select id="fillOrStroke" name="fillOrStroke">
+                    <option value = "fill" selected>fill</option>
+                    <option value = "stroke">stroke</option>
+                </select>
+            </div>
+            <div class="text-panel">
+                <label class="panel3" for="font-family">Font Family:</label>
+                <select id="font-family" name="fontFamily">
+                    <option value = "Arial" selected>Arial</option>
+                    <option value = "Times New Roman">Times New Roman</option>
+                </select>
+            </div>
+            <div class="text-panel">
+                <label class="panel4" for="style">Style:</label>
+                <select id="style" name="style">
+                    <option value = "normal" selected>Normal</option>
+                    <option value = "bold">Bold</option>
+                    <option value = "italic">Italic</option>
+                    <option value = "both">Both</option>
+                </select>
+            </div>
+            <div id="color-panel">
+                <div class="selectors">
                     <label class="panel5" for="stroke">Stoke Style:</label>
                     <input type='text' id="strokestyle" />
                 </div>
-
-                <div id="fill">
+                <div class="selectors">
                     <label class="panel6" for="fill">Fill Style:</label>
                     <input type='text' id="fillstyle" />
                 </div>
-
-                <div id="backg">
+                <div class="selectors">
                     <label class="panel7" for="background">Background:</label>
                     <input type='text' id="background" />
                 </div>
-
                 <div id="linew">
                     <input id="linewidth" type="range" name="linewidth" min="1" max="100">
                 </div>
-
-                <div id="Line">
-
+                <div id="line">
                     <select name="LineType" id="linetype">
                         <option value="butt">butt</option>
                         <option value="round">round</option>
                         <option value="square">square</option>
                     </select>
-
                     <select name="LineJoin" id="linejoin">
                         <option value="miter">miter</option>
                         <option value="round">round</option>
@@ -115,27 +92,15 @@
                     </select>
                 </div>
             </div>
+            <!-- action -->
+            <button class="btn fa fa-eraser" id="eraser">eraser</button>
+            <button class="btn fa fa-undo" id="clear">clear</button>
 
-            <!-- <div id="rowbottom"> -->
-                <!-- <div id="row4"> -->
-                    <!--<button class="btn fa fa-paint" id="upload">Firebase</button>-->
-                    <button class="btn fa fa-eraser" id="eraser">eraser</button>
-                    <button class="btn fa fa-undo" id="clear">clear</button>
-
-                <!-- </div> -->
-
-                <!-- <div id="row5"> -->
-                    <button class="btn fa fa-arrow-left" id="undo">undo</button>
-                    <button class="btn fa fa-arrow-right" id="redo">redo</button>
-                <!-- </div> -->
-            <!-- </div> -->
-                    <button class="btn fa fa-cloud-upload" id="upload">upload</button>
+            <button class="btn fa fa-arrow-left" id="undo">undo</button>
+            <button class="btn fa fa-arrow-right" id="redo">redo</button>
+            <button class="btn fa fa-cloud-upload" id="upload">upload</button>
         </div>
     </div>
-
-
-
-
 
     <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
@@ -326,18 +291,10 @@
             canvasPic.src = undoList.pop();
             
             canvasPic.onload = function () {
-                contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
+                contextReal.clearRect(0, 0, $('#canvas-container').width(), $('#canvas-container').height());
                 contextReal.drawImage(canvasPic, 0, 0); 
             }
         });
-
-        // $(window).resize(function () {
-        //     if ($(window).width() > 500) {
-
-        //         $('.menu').show(300);
-
-        //     }
-        // });
 
         $("#eyedropper").click(function () {
             currentFunction = new EyeDropper(contextReal);

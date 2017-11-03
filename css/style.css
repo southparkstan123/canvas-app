@@ -56,9 +56,10 @@ body{
 .menu {
     padding: 10px 10px;
     width: 20%;
-    height: 97%;
+    height: 80%;
     float: right;
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    background-color: darkslategray; 
 }
 
 .clearfix:after {
@@ -96,34 +97,23 @@ body{
     height: 40px;
 }
 
-
-
-#row1,
-#row2,
-#row3,
-#row4,
-#row5,
-#row6,
-#row7,
-#row8,
-
-#line,
 #linew,
-#random {
+#line {
     display: flex;
     justify-content: center;
+    margin: 5px;
 }
 
 
-#selectors {
-    margin: 10px 0;
-    padding: 9px 0;
+#color-panel{
     background-color: darkgray;
+    padding: 2px 0;
 }
 
-#selectors div{
-    padding:0px;
+.selectors {
+    padding: 5px 0;
 }
+
 
 #rowbottom {
     height: 20%;
@@ -187,25 +177,8 @@ label.panel7{
 }
 
 /* Menu Buttons - pop up message */
-
-#drawing-line {
-    position: relative;
-}
-
-#drawing-line:hover:after {
-    content: "Draw Line";
-    font-size: 2vh;
-    padding: 1vh;
-    border-radius: 5px;
-    background: #33cc99;
-    color: white;
-    font-weight: bold;
-    display:block;
-    position:absolute;
-    top: 0;
-    left: 60px;
-    text-align:center;
-    width: 80px;
+.thumbnail{
+    margin: 10px;
 }
 
 #linewidth:hover:after {
@@ -273,6 +246,6 @@ label.panel7{
 
 /* Selectors  */
 
-.sp-dd {
+/* .sp-dd {
     height: 30px;
-}
+} */

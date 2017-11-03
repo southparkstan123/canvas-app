@@ -5,6 +5,9 @@ class FirebaseService extends PaintFunction{
 
         this.storageRef = firebase.storage().ref();
         this.database = firebase.database();
+
+        this.originalCanvasWidth = $('#canvas-container').width();
+        this.originalCanvasHeight = $('#canvas-container').height();
     }
 
     uploadCanvas(){
@@ -14,7 +17,7 @@ class FirebaseService extends PaintFunction{
         context.globalCompositeOperation = 'destination-over';
 
         context.fillStyle = $("#background").spectrum('get').toHexString();//Set the color as the same as the canvas which is set in CSS
-        context.fillRect(0,0,this.canvas.width,this.canvas.height);
+        context.fillRect(0,0,this.originalCanvasWidth,this.originalCanvasHeight);
 
         let service = this;
 
@@ -68,14 +71,32 @@ class FirebaseService extends PaintFunction{
             var obj = snapshot.val();
             let canvasList = Object.values(obj);
             canvasList.forEach((item)=>{
-                let newImg = document.createElement('img');
+                //  let newImg = document.createElement('img');
                 
-                newImg.src = item.link;
-                newImg.style = "width:300px";
-                document.body.appendChild(newImg);
+                //  newImg.src = item.link;
+                //document.body.appendChild(newImg);
+
+                // $("body").appendChild(newImg.append(newImg.addClass("thumbnail")));
+
+                let img = $('<img>').attr({
+                    width: 100,
+                    src: item.link
+                });
+
+                let link = $('<a>').attr({
+                    href: item.link,
+                    target: '_blank'
+                });
+
+                $('body').append(link.append(img.addClass('thumbnail')));
+
+                
+
 
             });
         });
     }
+
+
 
 }

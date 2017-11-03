@@ -1,37 +1,51 @@
 class Eraser extends PaintFunction {
-    constructor(contextReal) {
+    constructor(contextReal, contextDraft) {
         super();
-        this.context = contextReal;
+        this.contextReal = contextReal;
+        this.contextDraft = contextDraft;
     }
 
     onMouseDown(coord, event, originalcolor) {
-        this.context.beginPath();
+        this.contextReal.beginPath();
+        this.contextDraft.beginPath();
     }
 
     onDragging(coord, event) {
-        this.context.globalCompositeOperation = "destination-out"; //can change the color of the background after Change bg color function
-        this.draw(coord[0], coord[1]);
-        this.context.globalCompositeOperation = 'source-over';
-        this.context.lineCap = "round";
+        console.log(this.contextDraft.globalAlpha);
+        console.log(this.contextReal.globalAlpha);
+        this.contextReal.globalCompositeOperation = "destination-out"; //can change the color of the background after Change bg color function
+        this.draw(this.contextReal, coord[0], coord[1]);
+        this.contextReal.globalCompositeOperation = 'source-over';
+        this.contextReal.lineCap = "round";
+
+        this.contextDraft.globalCompositeOperation = "destination-out"; //can change the color of the background after Change bg color function
+        this.draw(this.contextDraft, coord[0], coord[1]);
+        this.contextDraft.globalCompositeOperation = 'source-over';
+        this.contextDraft.lineCap = "round";
     }
 
     onMouseMove() { }
     onMouseUp() { }
     onMouseLeave(coord, event, dragging) {
         if (dragging) {
-            this.context.beginPath();
-            this.context.moveTo(coord[0], coord[1]);
-            this.draw(coord[0], coord[1]);
-            this.context.closePath();
+            this.contextDraft.beginPath();
+            this.contextDraft.moveTo(coord[0], coord[1]);
+            this.draw(this.contextDraft, coord[0], coord[1]);
+            this.contextDraft.closePath();
+
+            this.contextReal.beginPath();
+            this.contextReal.moveTo(coord[0], coord[1]);
+            this.draw(this.contextReal, coord[0], coord[1]);
+            this.contextReal.closePath();
         }
     }
 
     onMouseEnter() { }
 
-    draw(x, y) {
-        this.context.lineTo(x, y);
-        this.context.moveTo(x, y);
-        this.context.closePath();
-        this.context.stroke();
+    draw(context, x, y) {
+        context.lineTo(x, y);
+        context.moveTo(x, y);
+        context.closePath();
+        context.stroke();
     }
 }

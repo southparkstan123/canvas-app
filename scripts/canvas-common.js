@@ -103,14 +103,14 @@ $('#canvas-draft').dblclick(function (e) {
 
 class PaintFunction {
     constructor() {
-        this.strokeColor = $('#strokestyle').spectrum('get'); //After using the eyedropper, we need these codes to make sure all the things are painted in our desired style.
-        this.fillStyle = $('#fillstyle').spectrum('get');
+        this.strokeColor = $('#strokestyle').spectrum('get').toHexString(); //After using the eyedropper, we need these codes to make sure all the things are painted in our desired style.
+        this.fillColor = $('#fillstyle').spectrum('get').toHexString();
     }
 
     get lineWidth() {
         return document.querySelector('#linewidth').value
     }
-
+    
     onMouseDown() { }
     onDragging() { }
     onMouseMove() { }
