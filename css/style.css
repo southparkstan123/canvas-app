@@ -121,6 +121,10 @@ body{
     background-color: darkgray;
 }
 
+#selectors div{
+    padding:0px;
+}
+
 #rowbottom {
     height: 20%;
 }
@@ -130,11 +134,7 @@ body{
 }
 
 .sp-replacer {
-    width: 70%;
-    height: 70%;
-    border: none;
-    padding-right: 0;
-    margin-right: 5%;
+    float: right;
 }
 
 
@@ -145,10 +145,10 @@ body{
     height: 10%;
 }*/
 
-.sp-preview {
+/* .sp-preview {
     width: 70%;
     height: 70%;
-}
+} */
 
 label.panel1,
 label.panel2,
