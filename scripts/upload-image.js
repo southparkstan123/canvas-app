@@ -11,7 +11,6 @@ class UploadImage extends PaintFunction{
         context.globalCompositeOperation = 'destination-over';
 
         context.fillStyle = $("#background").spectrum('get').toHexString();//Set the color as the same as the canvas which is set in CSS
-
         context.fillRect(0,0,this.canvas.width,this.canvas.height);
 
         this.canvas.toBlob(function(blob) {

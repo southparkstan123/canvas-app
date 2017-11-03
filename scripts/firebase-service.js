@@ -13,8 +13,8 @@ class FirebaseService extends PaintFunction{
 
         context.globalCompositeOperation = 'destination-over';
 
-        context.fillStyle = $("#background").spectrum('get').toHexString();//Set the color as the same as the canvas which is set in CSS
-
+        // context.fillStyle = $("#background").spectrum('get').toHexString();//Set the color as the same as the canvas which is set in CSS
+        context.fillStyle = "#FFF";
         context.fillRect(0,0,this.canvas.width,this.canvas.height);
 
         let service = this;
